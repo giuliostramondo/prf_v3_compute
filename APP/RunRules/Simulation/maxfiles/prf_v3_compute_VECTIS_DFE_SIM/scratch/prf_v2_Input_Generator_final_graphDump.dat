@@ -1,0 +1,111 @@
+Node: 28
+Node: 29
+Node: 0
+Node: 1
+Node: 2
+Node: 3
+Node: 4
+Node: 31
+Node: 33
+Node: 34
+Node: 5
+Node: 6
+Node: 36
+Node: 38
+Node: 39
+Node: 7
+Node: 8
+Node: 41
+Node: 43
+Node: 44
+Node: 9
+Node: 10
+Node: 46
+Node: 48
+Node: 49
+Node: 11
+Node: 12
+Node: 51
+Node: 53
+Node: 54
+Node: 13
+Node: 14
+Node: 56
+Node: 58
+Node: 59
+Node: 15
+Node: 16
+Node: 61
+Node: 63
+Node: 64
+Node: 17
+Node: 18
+Node: 66
+Node: 68
+Node: 69
+Node: 19
+Node: 20
+Node: 71
+Node: 73
+Node: 74
+Node: 21
+Node: 22
+Node: 76
+Node: 78
+Node: 79
+Node: 23
+Node: 24
+Node: 81
+Node: 83
+Node: 84
+Node: 25
+Node: 26
+Node: 86
+Node: 91
+Node: 101
+Node: 88
+Node: 89
+Node: 90
+Node: 92
+Node: 100
+Node: 94
+Node: 95
+Node: 97
+Node: 99
+Node: 96
+Edge: 2 -> 3
+Edge: 3 -> 4
+Edge: 4 -> 31
+Edge: 2 -> 5
+Edge: 5 -> 6
+Edge: 6 -> 36
+Edge: 2 -> 7
+Edge: 7 -> 8
+Edge: 8 -> 41
+Edge: 2 -> 9
+Edge: 9 -> 10
+Edge: 10 -> 46
+Edge: 2 -> 11
+Edge: 11 -> 12
+Edge: 12 -> 51
+Edge: 2 -> 13
+Edge: 13 -> 14
+Edge: 14 -> 56
+Edge: 2 -> 15
+Edge: 15 -> 16
+Edge: 16 -> 61
+Edge: 2 -> 17
+Edge: 17 -> 18
+Edge: 18 -> 66
+Edge: 2 -> 19
+Edge: 19 -> 20
+Edge: 20 -> 71
+Edge: 2 -> 21
+Edge: 21 -> 22
+Edge: 22 -> 76
+Edge: 2 -> 23
+Edge: 23 -> 24
+Edge: 24 -> 81
+Edge: 2 -> 25
+Edge: 25 -> 26
+Edge: 26 -> 86

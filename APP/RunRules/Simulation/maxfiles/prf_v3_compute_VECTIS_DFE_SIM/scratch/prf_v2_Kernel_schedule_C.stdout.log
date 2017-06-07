@@ -1,0 +1,54 @@
+Welcome to the CBC MILP Solver 
+Version: 2.9.8 
+Build Date: Apr 18 2016 
+
+command line - /opt/maxcompiler/bin/cbc prf_v2_Kernel_schedule_C.mps.gz -threads 4 -solve -printi csv -solu prf_v2_Kernel_schedule_C.csv (default strategy 1)
+At line 1 NAME           CxSchedule
+At line 2 ROWS
+At line 3555 COLUMNS
+At line 8621 RHS
+At line 10398 BOUNDS
+At line 12747 ENDATA
+Problem CxSchedule has 3551 rows, 2348 columns and 8860 elements
+Coin0008I CxSchedule read with 0 errors
+threads was changed from 0 to 4
+Continuous objective value is 6053 - 0.11 seconds
+Cgl0003I 0 fixed, 2977 tightened bounds, 0 strengthened rows, 0 substitutions
+Cgl0003I 0 fixed, 1327 tightened bounds, 0 strengthened rows, 0 substitutions
+Cgl0003I 0 fixed, 1122 tightened bounds, 0 strengthened rows, 0 substitutions
+Cgl0003I 0 fixed, 972 tightened bounds, 0 strengthened rows, 0 substitutions
+Cgl0003I 0 fixed, 817 tightened bounds, 0 strengthened rows, 0 substitutions
+Cgl0003I 0 fixed, 553 tightened bounds, 0 strengthened rows, 0 substitutions
+Cgl0003I 0 fixed, 320 tightened bounds, 0 strengthened rows, 0 substitutions
+Cgl0003I 0 fixed, 177 tightened bounds, 0 strengthened rows, 0 substitutions
+Cgl0003I 0 fixed, 81 tightened bounds, 0 strengthened rows, 0 substitutions
+Cgl0004I processed model has 3545 rows, 2342 columns (2342 integer (0 of which binary)) and 8848 elements
+Cutoff increment increased from 1e-05 to 0.9999
+Cbc0012I Integer solution of 6053 found by DiveCoefficient after 0 iterations and 0 nodes (0.20 seconds)
+Cbc0030I Thread 0 used 0 times,  waiting to start 0.014005899, 0 cpu time, 0 locks, 0 locked, 0 waiting for locks
+Cbc0030I Thread 1 used 0 times,  waiting to start 0.011369228, 0 cpu time, 0 locks, 0 locked, 0 waiting for locks
+Cbc0030I Thread 2 used 0 times,  waiting to start 0.008685112, 0 cpu time, 0 locks, 0 locked, 0 waiting for locks
+Cbc0030I Thread 3 used 0 times,  waiting to start 0.0059359074, 0 cpu time, 0 locks, 0 locked, 0 waiting for locks
+Cbc0030I Main thread 0 waiting for threads,  1 locks, 3.8146973e-06 locked, 2.3841858e-07 waiting for locks
+Cbc0001I Search completed - best objective 6053, took 0 iterations and 0 nodes (0.21 seconds)
+Cbc0035I Maximum depth 0, 0 variables fixed on reduced cost
+Cuts at root node changed objective from 6053 to 6053
+Probing was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
+Gomory was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
+Knapsack was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
+Clique was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
+MixedIntegerRounding2 was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
+FlowCover was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
+TwoMirCuts was tried 0 times and created 0 cuts of which 0 were active after adding rounds of cuts (0.000 seconds)
+
+Result - Optimal solution found
+
+Objective value:                6053.00000000
+Enumerated nodes:               0
+Total iterations:               0
+Time (CPU seconds):             0.24
+Time (Wallclock seconds):       0.27
+
+Option for printingOptions changed from normal to csv
+Total time (CPU seconds):       0.26   (Wallclock seconds):       0.28
+

@@ -1,0 +1,32 @@
+Top 10 largest FIFOs
+     Costs                                              From                                                To
+        56                                     Utils.maxj:44                                     Utils.maxj:45
+        40                              prf_v2Kernel.maxj:41                                    Utils.maxj:196
+        40                                    Utils.maxj:288                                    Utils.maxj:180
+         5                                    Utils.maxj:338                                    Utils.maxj:338
+         3                                    Utils.maxj:692                                    Utils.maxj:692
+         1                                    Utils.maxj:264                                    Utils.maxj:264
+         1                                    Utils.maxj:265                                    Utils.maxj:265
+         1                                    Utils.maxj:264                     prf_v3_computeManager.maxj:25
+         1                                    Utils.maxj:265                     prf_v3_computeManager.maxj:25
+
+Top 10 lines with FIFO sinks
+     Costs                                              LineFIFO Count
+        56                                     Utils.maxj:45         8
+        40                                    Utils.maxj:196         5
+        40                                    Utils.maxj:180         5
+         5                                    Utils.maxj:338         5
+         3                                    Utils.maxj:692         3
+         2                     prf_v3_computeManager.maxj:25         2
+         1                                    Utils.maxj:264         1
+         1                                    Utils.maxj:265         1
+
+Top 10 lines with FIFO sources
+     Costs                                              LineFIFO Count
+        56                                     Utils.maxj:44         8
+        40                                    Utils.maxj:288         5
+        40                              prf_v2Kernel.maxj:41         5
+         5                                    Utils.maxj:338         5
+         3                                    Utils.maxj:692         3
+         2                                    Utils.maxj:264         2
+         2                                    Utils.maxj:265         2

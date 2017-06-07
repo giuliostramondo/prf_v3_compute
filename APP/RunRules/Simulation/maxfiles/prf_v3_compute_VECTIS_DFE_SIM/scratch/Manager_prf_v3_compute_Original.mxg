@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ManagerGraph version="2016.1.1" design_name="Manager_prf_v3_compute" compilation_phase="Original" hardwareBuild="false">
+	<Node id="4" instanceName="input_vector" type="InputFlexibleClock">
+		<Output clock="STREAM" name="input_vector" type="PULL el=1 ael=8" width="128">
+			<Stream name="Stream_5" sink="0" />
+		</Output>
+	</Node>
+	<Node id="0" instanceName="prf_v2_Input_Generator" type="Kernel">
+		<PxgFile phase="original">prf_v3_compute-prf_v2_Input_Generator-original.pxg</PxgFile>
+		<PxgFile phase="final-simulation">prf_v3_compute-prf_v2_Input_Generator-final-simulation.pxg</PxgFile>
+		<Input clock="STREAM" name="input_vector" type="PULL el=1 ael=2" width="768">
+			<Stream name="Stream_3" source="4" />
+		</Input>
+		<Output clock="STREAM" name="input_data_arr0_0" type="PUSH 5" width="64">
+			<Stream name="Stream_15" sink="2" />
+		</Output>
+		<Output clock="STREAM" name="input_data_arr0_1" type="PUSH 5" width="64">
+			<Stream name="Stream_19" sink="2" />
+		</Output>
+		<Output clock="STREAM" name="input_data_arr0_2" type="PUSH 5" width="64">
+			<Stream name="Stream_23" sink="2" />
+		</Output>
+		<Output clock="STREAM" name="input_data_arr0_3" type="PUSH 5" width="64">
+			<Stream name="Stream_27" sink="2" />
+		</Output>
+		<Output clock="STREAM" name="input_data_arr1_0" type="PUSH 5" width="64">
+			<Stream name="Stream_31" sink="2" />
+		</Output>
+		<Output clock="STREAM" name="input_data_arr1_1" type="PUSH 5" width="64">
+			<Stream name="Stream_35" sink="2" />
+		</Output>
+		<Output clock="STREAM" name="input_data_arr1_2" type="PUSH 5" width="64">
+			<Stream name="Stream_39" sink="2" />
+		</Output>
+		<Output clock="STREAM" name="input_data_arr1_3" type="PUSH 5" width="64">
+			<Stream name="Stream_43" sink="2" />
+		</Output>
+		<Output clock="STREAM" name="index_i" type="PUSH 5" width="64">
+			<Stream name="Stream_6" sink="2" />
+		</Output>
+		<Output clock="STREAM" name="index_j" type="PUSH 5" width="64">
+			<Stream name="Stream_7" sink="2" />
+		</Output>
+		<Output clock="STREAM" name="acc_type" type="PUSH 5" width="64">
+			<Stream name="Stream_8" sink="2" />
+		</Output>
+		<Output clock="STREAM" name="write_enable" type="PUSH 5" width="64">
+			<Stream name="Stream_9" sink="2" />
+		</Output>
+	</Node>
+	<Node id="2" instanceName="prf_v2_Kernel" type="Kernel">
+		<PxgFile phase="original">prf_v3_compute-prf_v2_Kernel-original.pxg</PxgFile>
+		<PxgFile phase="final-simulation">prf_v3_compute-prf_v2_Kernel-final-simulation.pxg</PxgFile>
+		<Input clock="STREAM" name="index_i" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_10" source="0" />
+		</Input>
+		<Input clock="STREAM" name="index_j" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_11" source="0" />
+		</Input>
+		<Input clock="STREAM" name="acc_type" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_12" source="0" />
+		</Input>
+		<Input clock="STREAM" name="write_enable" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_13" source="0" />
+		</Input>
+		<Input clock="STREAM" name="input_data_arr0_0" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_14" source="0" />
+		</Input>
+		<Input clock="STREAM" name="input_data_arr0_1" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_18" source="0" />
+		</Input>
+		<Input clock="STREAM" name="input_data_arr0_2" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_22" source="0" />
+		</Input>
+		<Input clock="STREAM" name="input_data_arr0_3" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_26" source="0" />
+		</Input>
+		<Input clock="STREAM" name="input_data_arr1_0" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_30" source="0" />
+		</Input>
+		<Input clock="STREAM" name="input_data_arr1_1" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_34" source="0" />
+		</Input>
+		<Input clock="STREAM" name="input_data_arr1_2" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_38" source="0" />
+		</Input>
+		<Input clock="STREAM" name="input_data_arr1_3" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_42" source="0" />
+		</Input>
+		<Output clock="STREAM" name="o_0_0" type="PUSH 5" width="64">
+			<Stream name="Stream_16" sink="1" />
+		</Output>
+		<Output clock="STREAM" name="o_0_1" type="PUSH 5" width="64">
+			<Stream name="Stream_20" sink="1" />
+		</Output>
+		<Output clock="STREAM" name="o_0_2" type="PUSH 5" width="64">
+			<Stream name="Stream_24" sink="1" />
+		</Output>
+		<Output clock="STREAM" name="o_0_3" type="PUSH 5" width="64">
+			<Stream name="Stream_28" sink="1" />
+		</Output>
+		<Output clock="STREAM" name="o_1_0" type="PUSH 5" width="64">
+			<Stream name="Stream_32" sink="1" />
+		</Output>
+		<Output clock="STREAM" name="o_1_1" type="PUSH 5" width="64">
+			<Stream name="Stream_36" sink="1" />
+		</Output>
+		<Output clock="STREAM" name="o_1_2" type="PUSH 5" width="64">
+			<Stream name="Stream_40" sink="1" />
+		</Output>
+		<Output clock="STREAM" name="o_1_3" type="PUSH 5" width="64">
+			<Stream name="Stream_44" sink="1" />
+		</Output>
+		<Output clock="STREAM" name="internal_watch_compute_b_output" type="PUSH 5" width="32">
+			<Stream name="Stream_50" sink="49" />
+		</Output>
+		<Output clock="STREAM" name="internal_watch_compute_bla_output" type="PUSH 5" width="32">
+			<Stream name="Stream_52" sink="49" />
+		</Output>
+		<Output clock="STREAM" name="internal_watch_compute_eq_output" type="PUSH 5" width="1">
+			<Stream name="Stream_54" sink="49" />
+		</Output>
+	</Node>
+	<Node id="1" instanceName="PRFOutputGen" type="Kernel">
+		<PxgFile phase="original">prf_v3_compute-PRFOutputGen-original.pxg</PxgFile>
+		<PxgFile phase="final-simulation">prf_v3_compute-PRFOutputGen-final-simulation.pxg</PxgFile>
+		<Input clock="STREAM" name="o_0_0" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_17" source="2" />
+		</Input>
+		<Input clock="STREAM" name="o_0_1" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_21" source="2" />
+		</Input>
+		<Input clock="STREAM" name="o_0_2" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_25" source="2" />
+		</Input>
+		<Input clock="STREAM" name="o_0_3" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_29" source="2" />
+		</Input>
+		<Input clock="STREAM" name="o_1_0" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_33" source="2" />
+		</Input>
+		<Input clock="STREAM" name="o_1_1" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_37" source="2" />
+		</Input>
+		<Input clock="STREAM" name="o_1_2" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_41" source="2" />
+		</Input>
+		<Input clock="STREAM" name="o_1_3" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_45" source="2" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PUSH 5" width="512">
+			<Stream name="Stream_46" sink="47" />
+		</Output>
+	</Node>
+	<Node id="49" instanceName="watch_prf_v2_Kernel" type="WatchBlock">
+		<Input clock="watch_clk" name="compute_b" type="PUSH 1" width="32">
+			<Stream name="Stream_51" source="2" />
+		</Input>
+		<Input clock="watch_clk" name="compute_bla" type="PUSH 1" width="32">
+			<Stream name="Stream_53" source="2" />
+		</Input>
+		<Input clock="watch_clk" name="compute_eq" type="PUSH 1" width="1">
+			<Stream name="Stream_55" source="2" />
+		</Input>
+	</Node>
+	<Node id="47" instanceName="output" type="OutputFlexibleClock">
+		<Input clock="STREAM" name="output" type="PUSH 64" width="128">
+			<Stream name="Stream_48" source="1" />
+		</Input>
+	</Node>
+</ManagerGraph>

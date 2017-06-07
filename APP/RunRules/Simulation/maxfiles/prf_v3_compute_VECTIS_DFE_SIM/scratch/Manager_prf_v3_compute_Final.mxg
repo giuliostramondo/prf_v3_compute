@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ManagerGraph version="2016.1.1" design_name="Manager_prf_v3_compute" compilation_phase="Final" hardwareBuild="false">
+	<Node id="4" instanceName="input_vector" type="InputFlexibleClock">
+		<Output clock="STREAM" name="input_vector" type="PULL el=1 ael=8" width="128">
+			<Stream name="Stream_5" sink="56" />
+		</Output>
+	</Node>
+	<Node id="56" instanceName="Stream_3" type="DualAspectReg">
+		<Input clock="STREAM" name="input" type="PULL el=1" width="128">
+			<Stream name="Stream_57" source="4" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1" width="768">
+			<Stream name="Stream_58" sink="64" />
+		</Output>
+	</Node>
+	<Node id="64" instanceName="Stream_59" type="Fifo">
+		<Input clock="STREAM" name="input" type="PULL el=1" width="768">
+			<Stream name="Stream_65" source="56" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="768">
+			<Stream name="Stream_66" sink="0" />
+		</Output>
+	</Node>
+	<Node id="0" instanceName="prf_v2_Input_Generator" type="Kernel">
+		<PxgFile phase="original">prf_v3_compute-prf_v2_Input_Generator-original.pxg</PxgFile>
+		<PxgFile phase="final-simulation">prf_v3_compute-prf_v2_Input_Generator-final-simulation.pxg</PxgFile>
+		<Input clock="STREAM" name="input_vector" type="PULL el=1 ael=2" width="768">
+			<Stream name="Stream_67" source="64" />
+		</Input>
+		<Output clock="STREAM" name="input_data_arr0_0" type="PUSH 5" width="64">
+			<Stream name="Stream_15" sink="84" />
+		</Output>
+		<Output clock="STREAM" name="input_data_arr0_1" type="PUSH 5" width="64">
+			<Stream name="Stream_19" sink="88" />
+		</Output>
+		<Output clock="STREAM" name="input_data_arr0_2" type="PUSH 5" width="64">
+			<Stream name="Stream_23" sink="92" />
+		</Output>
+		<Output clock="STREAM" name="input_data_arr0_3" type="PUSH 5" width="64">
+			<Stream name="Stream_27" sink="96" />
+		</Output>
+		<Output clock="STREAM" name="input_data_arr1_0" type="PUSH 5" width="64">
+			<Stream name="Stream_31" sink="100" />
+		</Output>
+		<Output clock="STREAM" name="input_data_arr1_1" type="PUSH 5" width="64">
+			<Stream name="Stream_35" sink="104" />
+		</Output>
+		<Output clock="STREAM" name="input_data_arr1_2" type="PUSH 5" width="64">
+			<Stream name="Stream_39" sink="108" />
+		</Output>
+		<Output clock="STREAM" name="input_data_arr1_3" type="PUSH 5" width="64">
+			<Stream name="Stream_43" sink="112" />
+		</Output>
+		<Output clock="STREAM" name="index_i" type="PUSH 5" width="64">
+			<Stream name="Stream_6" sink="68" />
+		</Output>
+		<Output clock="STREAM" name="index_j" type="PUSH 5" width="64">
+			<Stream name="Stream_7" sink="72" />
+		</Output>
+		<Output clock="STREAM" name="acc_type" type="PUSH 5" width="64">
+			<Stream name="Stream_8" sink="76" />
+		</Output>
+		<Output clock="STREAM" name="write_enable" type="PUSH 5" width="64">
+			<Stream name="Stream_9" sink="80" />
+		</Output>
+	</Node>
+	<Node id="84" instanceName="Stream_14" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_85" source="0" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_86" sink="2" />
+		</Output>
+	</Node>
+	<Node id="88" instanceName="Stream_18" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_89" source="0" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_90" sink="2" />
+		</Output>
+	</Node>
+	<Node id="92" instanceName="Stream_22" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_93" source="0" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_94" sink="2" />
+		</Output>
+	</Node>
+	<Node id="96" instanceName="Stream_26" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_97" source="0" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_98" sink="2" />
+		</Output>
+	</Node>
+	<Node id="100" instanceName="Stream_30" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_101" source="0" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_102" sink="2" />
+		</Output>
+	</Node>
+	<Node id="104" instanceName="Stream_34" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_105" source="0" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_106" sink="2" />
+		</Output>
+	</Node>
+	<Node id="108" instanceName="Stream_38" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_109" source="0" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_110" sink="2" />
+		</Output>
+	</Node>
+	<Node id="112" instanceName="Stream_42" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_113" source="0" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_114" sink="2" />
+		</Output>
+	</Node>
+	<Node id="68" instanceName="Stream_10" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_69" source="0" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_70" sink="2" />
+		</Output>
+	</Node>
+	<Node id="72" instanceName="Stream_11" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_73" source="0" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_74" sink="2" />
+		</Output>
+	</Node>
+	<Node id="76" instanceName="Stream_12" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_77" source="0" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_78" sink="2" />
+		</Output>
+	</Node>
+	<Node id="80" instanceName="Stream_13" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_81" source="0" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_82" sink="2" />
+		</Output>
+	</Node>
+	<Node id="2" instanceName="prf_v2_Kernel" type="Kernel">
+		<PxgFile phase="original">prf_v3_compute-prf_v2_Kernel-original.pxg</PxgFile>
+		<PxgFile phase="final-simulation">prf_v3_compute-prf_v2_Kernel-final-simulation.pxg</PxgFile>
+		<Input clock="STREAM" name="index_i" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_71" source="68" />
+		</Input>
+		<Input clock="STREAM" name="index_j" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_75" source="72" />
+		</Input>
+		<Input clock="STREAM" name="acc_type" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_79" source="76" />
+		</Input>
+		<Input clock="STREAM" name="write_enable" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_83" source="80" />
+		</Input>
+		<Input clock="STREAM" name="input_data_arr0_0" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_87" source="84" />
+		</Input>
+		<Input clock="STREAM" name="input_data_arr0_1" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_91" source="88" />
+		</Input>
+		<Input clock="STREAM" name="input_data_arr0_2" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_95" source="92" />
+		</Input>
+		<Input clock="STREAM" name="input_data_arr0_3" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_99" source="96" />
+		</Input>
+		<Input clock="STREAM" name="input_data_arr1_0" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_103" source="100" />
+		</Input>
+		<Input clock="STREAM" name="input_data_arr1_1" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_107" source="104" />
+		</Input>
+		<Input clock="STREAM" name="input_data_arr1_2" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_111" source="108" />
+		</Input>
+		<Input clock="STREAM" name="input_data_arr1_3" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_115" source="112" />
+		</Input>
+		<Output clock="STREAM" name="o_0_0" type="PUSH 5" width="64">
+			<Stream name="Stream_16" sink="116" />
+		</Output>
+		<Output clock="STREAM" name="o_0_1" type="PUSH 5" width="64">
+			<Stream name="Stream_20" sink="120" />
+		</Output>
+		<Output clock="STREAM" name="o_0_2" type="PUSH 5" width="64">
+			<Stream name="Stream_24" sink="124" />
+		</Output>
+		<Output clock="STREAM" name="o_0_3" type="PUSH 5" width="64">
+			<Stream name="Stream_28" sink="128" />
+		</Output>
+		<Output clock="STREAM" name="o_1_0" type="PUSH 5" width="64">
+			<Stream name="Stream_32" sink="132" />
+		</Output>
+		<Output clock="STREAM" name="o_1_1" type="PUSH 5" width="64">
+			<Stream name="Stream_36" sink="136" />
+		</Output>
+		<Output clock="STREAM" name="o_1_2" type="PUSH 5" width="64">
+			<Stream name="Stream_40" sink="140" />
+		</Output>
+		<Output clock="STREAM" name="o_1_3" type="PUSH 5" width="64">
+			<Stream name="Stream_44" sink="144" />
+		</Output>
+		<Output clock="STREAM" name="internal_watch_compute_b_output" type="PUSH 5" width="32">
+			<Stream name="Stream_50" sink="49" />
+		</Output>
+		<Output clock="STREAM" name="internal_watch_compute_bla_output" type="PUSH 5" width="32">
+			<Stream name="Stream_52" sink="49" />
+		</Output>
+		<Output clock="STREAM" name="internal_watch_compute_eq_output" type="PUSH 5" width="1">
+			<Stream name="Stream_54" sink="49" />
+		</Output>
+	</Node>
+	<Node id="116" instanceName="Stream_17" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_117" source="2" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_118" sink="1" />
+		</Output>
+	</Node>
+	<Node id="120" instanceName="Stream_21" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_121" source="2" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_122" sink="1" />
+		</Output>
+	</Node>
+	<Node id="124" instanceName="Stream_25" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_125" source="2" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_126" sink="1" />
+		</Output>
+	</Node>
+	<Node id="128" instanceName="Stream_29" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_129" source="2" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_130" sink="1" />
+		</Output>
+	</Node>
+	<Node id="132" instanceName="Stream_33" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_133" source="2" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_134" sink="1" />
+		</Output>
+	</Node>
+	<Node id="136" instanceName="Stream_37" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_137" source="2" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_138" sink="1" />
+		</Output>
+	</Node>
+	<Node id="140" instanceName="Stream_41" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_141" source="2" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_142" sink="1" />
+		</Output>
+	</Node>
+	<Node id="144" instanceName="Stream_45" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="64">
+			<Stream name="Stream_145" source="2" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_146" sink="1" />
+		</Output>
+	</Node>
+	<Node id="49" instanceName="watch_prf_v2_Kernel" type="WatchBlock">
+		<Input clock="STREAM" name="compute_b" type="PUSH 5" width="32">
+			<Stream name="Stream_51" source="2" />
+		</Input>
+		<Input clock="STREAM" name="compute_bla" type="PUSH 5" width="32">
+			<Stream name="Stream_53" source="2" />
+		</Input>
+		<Input clock="STREAM" name="compute_eq" type="PUSH 5" width="1">
+			<Stream name="Stream_55" source="2" />
+		</Input>
+	</Node>
+	<Node id="1" instanceName="PRFOutputGen" type="Kernel">
+		<PxgFile phase="original">prf_v3_compute-PRFOutputGen-original.pxg</PxgFile>
+		<PxgFile phase="final-simulation">prf_v3_compute-PRFOutputGen-final-simulation.pxg</PxgFile>
+		<Input clock="STREAM" name="o_0_0" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_119" source="116" />
+		</Input>
+		<Input clock="STREAM" name="o_0_1" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_123" source="120" />
+		</Input>
+		<Input clock="STREAM" name="o_0_2" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_127" source="124" />
+		</Input>
+		<Input clock="STREAM" name="o_0_3" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_131" source="128" />
+		</Input>
+		<Input clock="STREAM" name="o_1_0" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_135" source="132" />
+		</Input>
+		<Input clock="STREAM" name="o_1_1" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_139" source="136" />
+		</Input>
+		<Input clock="STREAM" name="o_1_2" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_143" source="140" />
+		</Input>
+		<Input clock="STREAM" name="o_1_3" type="PULL el=1 ael=2" width="64">
+			<Stream name="Stream_147" source="144" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PUSH 5" width="512">
+			<Stream name="Stream_46" sink="148" />
+		</Output>
+	</Node>
+	<Node id="148" instanceName="Stream_61" type="Fifo">
+		<Input clock="STREAM" name="input" type="PUSH 5" width="512">
+			<Stream name="Stream_149" source="1" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PULL el=1" width="512">
+			<Stream name="Stream_150" sink="60" />
+		</Output>
+	</Node>
+	<Node id="60" instanceName="Stream_48" type="DualAspectMux">
+		<Input clock="STREAM" name="input" type="PULL el=1" width="512">
+			<Stream name="Stream_151" source="148" />
+		</Input>
+		<Output clock="STREAM" name="output" type="PUSH 2" width="128">
+			<Stream name="Stream_62" sink="47" />
+		</Output>
+	</Node>
+	<Node id="47" instanceName="output" type="OutputFlexibleClock">
+		<Input clock="STREAM" name="output" type="PUSH 64" width="128">
+			<Stream name="Stream_63" source="60" />
+		</Input>
+	</Node>
+</ManagerGraph>

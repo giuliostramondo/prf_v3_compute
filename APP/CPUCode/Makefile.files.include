@@ -1,0 +1,9 @@
+#
+# This file is managed by MaxIDE. Do NOT change.
+#
+#HEADERS:= 
+#SOURCES:= prf_v3_computeCpuCode.c 
+
+#Modified to compile testbench
+HEADERS:= collection.h prf.h testbench_utils.h utility.h 
+SOURCES:= collection.c prf.c prf_v3_computeCpuCode.c testbench_utils.c utility.c 

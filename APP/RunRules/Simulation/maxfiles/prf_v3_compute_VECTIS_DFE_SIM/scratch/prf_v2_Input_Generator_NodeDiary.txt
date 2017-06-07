@@ -1,0 +1,1050 @@
+NodeID     : 0
+Node       : Scalar input (io_input_vector_force_disabled)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 1
+Node       : ~
+Node type  : NodeNot
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 2
+Node       : Input(input_vector)
+Node type  : NodeInput
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 3
+Node       : [63:0]
+Node type  : NodeSlice
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 4
+Node       : <{HWOffsetFix:64, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 5
+Node       : [127:64]
+Node type  : NodeSlice
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 6
+Node       : <{HWOffsetFix:64, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 7
+Node       : [191:128]
+Node type  : NodeSlice
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 8
+Node       : <{HWOffsetFix:64, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 9
+Node       : [255:192]
+Node type  : NodeSlice
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 10
+Node       : <{HWOffsetFix:64, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 11
+Node       : [319:256]
+Node type  : NodeSlice
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 12
+Node       : <{HWOffsetFix:64, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 13
+Node       : [383:320]
+Node type  : NodeSlice
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 14
+Node       : <{HWOffsetFix:64, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 15
+Node       : [447:384]
+Node type  : NodeSlice
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 16
+Node       : <{HWOffsetFix:64, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 17
+Node       : [511:448]
+Node type  : NodeSlice
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 18
+Node       : <{HWOffsetFix:64, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 19
+Node       : [575:512]
+Node type  : NodeSlice
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 20
+Node       : <{HWOffsetFix:64, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 21
+Node       : [639:576]
+Node type  : NodeSlice
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 22
+Node       : <{HWOffsetFix:64, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 23
+Node       : [703:640]
+Node type  : NodeSlice
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 24
+Node       : <{HWOffsetFix:64, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 25
+Node       : [767:704]
+Node type  : NodeSlice
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 26
+Node       : <{HWOffsetFix:64, 0, UNSIGNED}>
+Node type  : NodeReinterpret
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.input(IO.java:630)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:27)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 27
+Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+Node type  : NodeConstantRawBits
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 28
+Node       : Scalar input (io_input_data_arr0_0_force_disabled)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 29
+Node       : ~
+Node type  : NodeNot
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 30
+Node       : &
+Node type  : NodeAnd
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 31
+Node       : Output(input_data_arr0_0)
+Node type  : NodeOutput
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 32
+Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+Node type  : NodeConstantRawBits
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 33
+Node       : Scalar input (io_input_data_arr0_1_force_disabled)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 34
+Node       : ~
+Node type  : NodeNot
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 35
+Node       : &
+Node type  : NodeAnd
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 36
+Node       : Output(input_data_arr0_1)
+Node type  : NodeOutput
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 37
+Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+Node type  : NodeConstantRawBits
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 38
+Node       : Scalar input (io_input_data_arr0_2_force_disabled)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 39
+Node       : ~
+Node type  : NodeNot
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 40
+Node       : &
+Node type  : NodeAnd
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 41
+Node       : Output(input_data_arr0_2)
+Node type  : NodeOutput
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 42
+Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+Node type  : NodeConstantRawBits
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 43
+Node       : Scalar input (io_input_data_arr0_3_force_disabled)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 44
+Node       : ~
+Node type  : NodeNot
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 45
+Node       : &
+Node type  : NodeAnd
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 46
+Node       : Output(input_data_arr0_3)
+Node type  : NodeOutput
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 47
+Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+Node type  : NodeConstantRawBits
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 48
+Node       : Scalar input (io_input_data_arr1_0_force_disabled)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 49
+Node       : ~
+Node type  : NodeNot
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 50
+Node       : &
+Node type  : NodeAnd
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 51
+Node       : Output(input_data_arr1_0)
+Node type  : NodeOutput
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 52
+Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+Node type  : NodeConstantRawBits
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 53
+Node       : Scalar input (io_input_data_arr1_1_force_disabled)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 54
+Node       : ~
+Node type  : NodeNot
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 55
+Node       : &
+Node type  : NodeAnd
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 56
+Node       : Output(input_data_arr1_1)
+Node type  : NodeOutput
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 57
+Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+Node type  : NodeConstantRawBits
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 58
+Node       : Scalar input (io_input_data_arr1_2_force_disabled)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 59
+Node       : ~
+Node type  : NodeNot
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 60
+Node       : &
+Node type  : NodeAnd
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 61
+Node       : Output(input_data_arr1_2)
+Node type  : NodeOutput
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 62
+Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+Node type  : NodeConstantRawBits
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 63
+Node       : Scalar input (io_input_data_arr1_3_force_disabled)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 64
+Node       : ~
+Node type  : NodeNot
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 65
+Node       : &
+Node type  : NodeAnd
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 66
+Node       : Output(input_data_arr1_3)
+Node type  : NodeOutput
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:31)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 67
+Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+Node type  : NodeConstantRawBits
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:36)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 68
+Node       : Scalar input (io_index_i_force_disabled)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:36)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 69
+Node       : ~
+Node type  : NodeNot
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:36)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 70
+Node       : &
+Node type  : NodeAnd
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:36)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 71
+Node       : Output(index_i)
+Node type  : NodeOutput
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:36)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 72
+Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+Node type  : NodeConstantRawBits
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:37)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 73
+Node       : Scalar input (io_index_j_force_disabled)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:37)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 74
+Node       : ~
+Node type  : NodeNot
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:37)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 75
+Node       : &
+Node type  : NodeAnd
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:37)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 76
+Node       : Output(index_j)
+Node type  : NodeOutput
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:37)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 77
+Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+Node type  : NodeConstantRawBits
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:38)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 78
+Node       : Scalar input (io_acc_type_force_disabled)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:38)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 79
+Node       : ~
+Node type  : NodeNot
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:38)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 80
+Node       : &
+Node type  : NodeAnd
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:38)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 81
+Node       : Output(acc_type)
+Node type  : NodeOutput
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:38)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 82
+Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+Node type  : NodeConstantRawBits
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:39)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 83
+Node       : Scalar input (io_write_enable_force_disabled)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:39)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 84
+Node       : ~
+Node type  : NodeNot
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:39)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 85
+Node       : &
+Node type  : NodeAnd
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:39)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 86
+Node       : Output(write_enable)
+Node type  : NodeOutput
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.IO.output(IO.java:836)
+prf_v3_compute.prf_v2_Input_Generator.<init>(prf_v2_Input_Generator.maxj:39)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:22)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 87
+Node       : 1.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.custom.CustomManager.addKernel(CustomManager.java:879)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:21)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+Led to:
+  NodeID     : 101
+  Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 88
+Node       : {HWOffsetFix:49, 0, UNSIGNED}\n0x1000000000000; 2.81474976710656E14
+Node type  : NodeConstantRawBits
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.custom.CustomManager.addKernel(CustomManager.java:879)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:21)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 89
+Node       : Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0
+Node type  : NodeCounter
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.custom.CustomManager.addKernel(CustomManager.java:879)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:21)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 90
+Node       : stream offset: 1
+Node type  : NodeStreamOffset
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.custom.CustomManager.addKernel(CustomManager.java:879)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:21)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 91
+Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+Node type  : NodeConstantRawBits
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.custom.CustomManager.addKernel(CustomManager.java:879)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:21)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 92
+Node       : Scalar output (current_run_cycle_count)
+Node type  : NodeOutputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.custom.CustomManager.addKernel(CustomManager.java:879)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:21)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 93
+Node       : 1.0
+Node type  : NodeConstantDouble
+Removed by : [RemoveUntypedConstants]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.custom.CustomManager.addKernel(CustomManager.java:879)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:21)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+Led to:
+  NodeID     : 100
+  Node       : {HWOffsetFix:1, 0, UNSIGNED}\n0x1; 1.0
+  Node type  : NodeConstantRawBits
+  Creator    : RemoveUntypedConstants
+
+------------
+NodeID     : 94
+Node       : {HWOffsetFix:49, 0, UNSIGNED}\n0x1000000000000; 2.81474976710656E14
+Node type  : NodeConstantRawBits
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.custom.CustomManager.addKernel(CustomManager.java:879)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:21)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 95
+Node       : Counter(NUMERIC_INCREMENTING)\nInc: 1\nReset: 0\nInit: 0
+Node type  : NodeCounter
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.custom.CustomManager.addKernel(CustomManager.java:879)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:21)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 96
+Node       : flush on trigger
+Node type  : NodeFlush
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.custom.CustomManager.addKernel(CustomManager.java:879)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:21)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NodeID     : 97
+Node       : Scalar input (run_cycle_count)
+Node type  : NodeInputMappedReg
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.custom.CustomManager.addKernel(CustomManager.java:879)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:21)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+------------
+NODE WAS REMOVED!
+NodeID     : 98
+Node       : ==
+Node type  : NodeEq
+Removed by : [OptimiseNodesPass]
+Creator    : User
+Stack Trace:
+com.maxeler.maxcompiler.v2.managers.custom.CustomManager.addKernel(CustomManager.java:879)
+prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:21)
+prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+Led to:
+  NodeID     : 99
+  Node       : ==
+  Node type  : NodeEqInlined
+  Creator    : OptimiseNodesPass
+
+------------

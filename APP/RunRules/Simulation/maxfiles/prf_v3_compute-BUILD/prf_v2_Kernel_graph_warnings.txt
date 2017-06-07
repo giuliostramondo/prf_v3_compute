@@ -1,0 +1,121 @@
+*** After kernel graph-pass 'Init Graph' ***
+node "&" (ID 678) has unconnected outputs: [result]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:550)
+	prf_v3_compute.Utils.MBlock_i(Utils.maxj:301)
+	prf_v3_compute.prf_v2Kernel.<init>(prf_v2Kernel.maxj:52)
+	prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:26)
+	prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+	
+node "&" (ID 683) has unconnected outputs: [result]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:550)
+	prf_v3_compute.Utils.MBlock_i(Utils.maxj:301)
+	prf_v3_compute.prf_v2Kernel.<init>(prf_v2Kernel.maxj:52)
+	prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:26)
+	prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+	
+node "&" (ID 688) has unconnected outputs: [result]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:550)
+	prf_v3_compute.Utils.MBlock_i(Utils.maxj:301)
+	prf_v3_compute.prf_v2Kernel.<init>(prf_v2Kernel.maxj:52)
+	prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:26)
+	prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+	
+node "&" (ID 693) has unconnected outputs: [result]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:550)
+	prf_v3_compute.Utils.MBlock_i(Utils.maxj:301)
+	prf_v3_compute.prf_v2Kernel.<init>(prf_v2Kernel.maxj:52)
+	prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:26)
+	prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+	
+node "&" (ID 698) has unconnected outputs: [result]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:550)
+	prf_v3_compute.Utils.MBlock_i(Utils.maxj:301)
+	prf_v3_compute.prf_v2Kernel.<init>(prf_v2Kernel.maxj:52)
+	prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:26)
+	prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+	
+node "&" (ID 703) has unconnected outputs: [result]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:550)
+	prf_v3_compute.Utils.MBlock_i(Utils.maxj:301)
+	prf_v3_compute.prf_v2Kernel.<init>(prf_v2Kernel.maxj:52)
+	prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:26)
+	prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+	
+node "&" (ID 708) has unconnected outputs: [result]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:550)
+	prf_v3_compute.Utils.MBlock_i(Utils.maxj:301)
+	prf_v3_compute.prf_v2Kernel.<init>(prf_v2Kernel.maxj:52)
+	prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:26)
+	prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+	
+node "&" (ID 713) has unconnected outputs: [result]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar.and(DFEVar.java:550)
+	prf_v3_compute.Utils.MBlock_i(Utils.maxj:301)
+	prf_v3_compute.prf_v2Kernel.<init>(prf_v2Kernel.maxj:52)
+	prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:26)
+	prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+	
+node "0.0" (ID 1298) has unconnected outputs: [value]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:82)
+	prf_v3_compute.prf_v2Kernel.<init>(prf_v2Kernel.maxj:83)
+	prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:26)
+	prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+	
+node "0.0" (ID 1299) has unconnected outputs: [value]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:82)
+	prf_v3_compute.prf_v2Kernel.<init>(prf_v2Kernel.maxj:83)
+	prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:26)
+	prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+	
+node "0.0" (ID 1300) has unconnected outputs: [value]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:82)
+	prf_v3_compute.prf_v2Kernel.<init>(prf_v2Kernel.maxj:83)
+	prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:26)
+	prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+	
+node "0.0" (ID 1301) has unconnected outputs: [value]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:82)
+	prf_v3_compute.prf_v2Kernel.<init>(prf_v2Kernel.maxj:83)
+	prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:26)
+	prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+	
+node "0.0" (ID 1302) has unconnected outputs: [value]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:82)
+	prf_v3_compute.prf_v2Kernel.<init>(prf_v2Kernel.maxj:83)
+	prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:26)
+	prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+	
+node "0.0" (ID 1303) has unconnected outputs: [value]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:82)
+	prf_v3_compute.prf_v2Kernel.<init>(prf_v2Kernel.maxj:83)
+	prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:26)
+	prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+	
+node "0.0" (ID 1304) has unconnected outputs: [value]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:82)
+	prf_v3_compute.prf_v2Kernel.<init>(prf_v2Kernel.maxj:83)
+	prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:26)
+	prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+	
+node "0.0" (ID 1305) has unconnected outputs: [value]
+stack trace of node origin follows:
+	com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Constant.var(Constant.java:82)
+	prf_v3_compute.prf_v2Kernel.<init>(prf_v2Kernel.maxj:83)
+	prf_v3_compute.prf_v3_computeManager.<init>(prf_v3_computeManager.maxj:26)
+	prf_v3_compute.prf_v3_computeManager.main(prf_v3_computeManager.maxj:56)
+	
