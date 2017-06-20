@@ -61,115 +61,73 @@ int main(int argc, char* argv[])
     }
     data_type* input_data;
     data_type* output_data;
-    struct timeval after,before;
     int counter=0;
     char* scheme_name = schemeStringFromMappingScheme(s);
-        printf("Testing %s scheme ...\n",scheme_name);
-        printf("Filling PRF...\n");
 
         input_data = fillPRF( p, q, RECT_ROW,A_test,  &counter);
-        //int64_t* compute= (int64_t*) malloc(sizeof(int64_t)*counter);
-        //setCompute(counter,compute,0);
-
         output_data = (data_type*) malloc(sizeof(data_type)*p*q*counter);
         //Add here first call to the PRF on maxeler board
-        gettimeofday(&before, NULL);
-        //prf_v3_compute( counter, compute,input_data,output_data);
-        prf_v3_compute(0, counter,input_data,output_data);
-        gettimeofday(&after, NULL);
-        double time =(double)(after.tv_sec - before.tv_sec) +
-                        (double)(after.tv_usec - before.tv_usec) / 1e6;
-        printf("Read %d data from memory in %lf seconds\n",p*q*counter,time);
-        printf("The average time to read one element is %lf seconds\n",time/(p*q*counter));
-        printf("Assuming that each element is 64bit the bandwidth is %lf bit/s, %lf byte/s, %lf KByte/s, %lf MByte/s\n",(p*q*counter*64)/time,(p*q*counter*64)/(8*time),(p*q*counter*64)/(1024*8*time),(p*q*counter*64)/(1024*1024*8*time));
+printf("Executing\n");
+        //For testing purposes the computation is skept. 
+        int32_t compute_addr_len=0;
+        int64_t *compute_ops = (int64_t*) malloc(sizeof(int64_t)*10);
+        
 
-//        printf("Computing...\n");
+        prf_v3_compute(counter, compute_addr_len , counter, input_data,output_data, compute_ops);
+printf("Done\n");
+
+//            int error = 0;
+//            //Check equivalence
+//            for (j=0;j<counter;j++){
+//                if (s == ROW_COL && !((input_data[j*((p*q)+4) + (p*q)] % p==0) || (input_data[j*((p*q)+4) + (p*q)+1] % q==0)) ){
+//                                continue;
+//                }
+//                for(k=0;k<p*q;k++){
+//                    if(output_data[j*(p*q)+k] != expected_output[j*(p*q)+k]){
+//                        error=1;
+//                    }
+//                }
+//                if(error){
+//                    //Print error
+//                    printf("\033[31m[Error]\033[0m\t output %d\n",j);
+//                    printf("Input: ");
+//                     for(w=0;w<(p*q)+4;w++){
+//                        printf("%d ",input_data[j*((p*q)+4)+w]);
+//                    }
+//                    printf("\n");
+//                    printf("Expected Output: ");
+//            for(w=0;w<p*q;w++){
+//                        printf("%d ",expected_output[j*(p*q)+w]);
+//                    }
+//                    printf("\n");
+//                    printf("Output: ");
+//                    for(w=0;w<p*q;w++){
+//                        printf("%d ",output_data[j*(p*q)+w]);
+//                    }
+//                    printf("\n");
+//                    error=0;
+//                }else{
+//            printf("\033[32m[Correct]\033[0m\t output %d\n",j);
+//            printf("Input: ");
+//                         for(w=0;w<(p*q)+4;w++){
+//                            printf("%d ",input_data[j*((p*q)+4)+w]);
+//                        }
+//                        printf("\n");
+//                        printf("Output: ");
+//                        for(w=0;w<p*q;w++){
+//                            printf("%d ",output_data[j*(p*q)+w]);
+//                        }
+//                        printf("\n");
 //
-//        //setCompute(counter,compute,1);
-//        gettimeofday(&before, NULL);
-//        prf_v3_compute( counter, compute,input_data,output_data);
-//        gettimeofday(&after, NULL);
-//        time =(double)(after.tv_sec - before.tv_sec) +
-//                        (double)(after.tv_usec - before.tv_usec) / 1e6;
-//        printf("Read %d data from memory in %lf seconds\n",p*q*counter,time);
-//        printf("The average time to read one element is %lf seconds\n",time/(p*q*counter));
-//        printf("Assuming that each element is 64bit the bandwidth is %lf bit/s, %lf byte/s, %lf KByte/s, %lf MByte/s\n",(p*q*counter*64)/time,(p*q*counter*64)/(8*time),(p*q*counter*64)/(1024*8*time),(p*q*counter*64)/(1024*1024*8*time));
-//        //PRF_Complete( counter, input_data,output_data);
-        //free(compute);
-
-        t_list* available_acc_type = getAvaliableAccessType(s);
-        while(available_acc_type!=NULL){
-            acc_type* curr_shape = (acc_type*) available_acc_type->data;
-            char* shape_name = accessStringFromAccessType(*curr_shape);
-            printf("Testing %s shape...\n",shape_name);
-            input_data = all_accesses(p,q,*curr_shape,N,M,&counter);
-            data_type* expected_output = generate_expected_output(p,q,A_test,input_data,counter);
-            data_type* output_data = (data_type*) malloc(sizeof(data_type)*p*q*counter);
-        //Send the input_data to the PRF and collect outputs
-           // PRF_Complete( counter, input_data,output_data);
-            //int64_t* compute= (int64_t*) malloc(sizeof(int64_t)*counter);
-            //setCompute(counter,compute,0);
-            gettimeofday(&before, NULL);
-            prf_v3_compute( 0,counter, input_data,output_data);
-            gettimeofday(&after, NULL);
-            //free(compute);
-            double time =(double)(after.tv_sec - before.tv_sec) +
-                            (double)(after.tv_usec - before.tv_usec) / 1e6;
-            printf("Read %d data from memory in %lf seconds\n",p*q*counter,time);
-            printf("The average time to read one element is %lf seconds\n",time/(p*q*counter));
-            printf("Assuming that each element is 64bit the bandwidth is %lf bit/s, %lf byte/s, %lf KByte/s, %lf MByte/s\n",(p*q*counter*64)/time,(p*q*counter*64)/(8*time),(p*q*counter*64)/(1024*8*time),(p*q*counter*64)/(1024*1024*8*time));
+//        }
+//            }
 
 
-            int error = 0;
-            //Check equivalence
-            for (j=0;j<counter;j++){
-                if (s == ROW_COL && !((input_data[j*((p*q)+4) + (p*q)] % p==0) || (input_data[j*((p*q)+4) + (p*q)+1] % q==0)) ){
-                                continue;
-                }
-                for(k=0;k<p*q;k++){
-                    if(output_data[j*(p*q)+k] != expected_output[j*(p*q)+k]){
-                        error=1;
-                    }
-                }
-                if(error){
-                    //Print error
-                    printf("\033[31m[Error]\033[0m\t output %d\n",j);
-                    printf("Input: ");
-                     for(w=0;w<(p*q)+4;w++){
-                        printf("%d ",input_data[j*((p*q)+4)+w]);
-                    }
-                    printf("\n");
-                    printf("Expected Output: ");
-            for(w=0;w<p*q;w++){
-                        printf("%d ",expected_output[j*(p*q)+w]);
-                    }
-                    printf("\n");
-                    printf("Output: ");
-                    for(w=0;w<p*q;w++){
-                        printf("%d ",output_data[j*(p*q)+w]);
-                    }
-                    printf("\n");
-                    error=0;
-                }else{
-            printf("\033[32m[Correct]\033[0m\t output %d\n",j);
-            printf("Input: ");
-                         for(w=0;w<(p*q)+4;w++){
-                            printf("%d ",input_data[j*((p*q)+4)+w]);
-                        }
-                        printf("\n");
-                        printf("Output: ");
-                        for(w=0;w<p*q;w++){
-                            printf("%d ",output_data[j*(p*q)+w]);
-                        }
-                        printf("\n");
-
-        }
+        for( i = 0; i<M;i++){
+            for(j=0; j<N ; j++){
+            printf("%d \n", output_data[i*N+j]);
             }
-            available_acc_type = available_acc_type->next;
-
-        }
-
-
+        }    
 
     return 0;
 }

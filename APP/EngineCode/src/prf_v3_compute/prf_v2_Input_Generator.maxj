@@ -11,7 +11,7 @@ import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVectorType;
 
 public class prf_v2_Input_Generator  extends Kernel{
     private static final DFEType type = PRFConstants.type;
-    private static final DFEType addressType = dfeInt(64);
+    private static final DFEType addressType = dfeUInt(32);
 
     static int p = PRFConstants.p;
     static int q = PRFConstants.q;
@@ -33,10 +33,10 @@ public class prf_v2_Input_Generator  extends Kernel{
         }
 
 
-        io.output("index_i",input[p*q], type);
-        io.output("index_j",input[p*q+1], type);
-        io.output("acc_type",input[p*q+2], type);
-        io.output("write_enable",input[p*q+3], type);
+        io.output("index_i",input[p*q].cast(dfeUInt(32)), addressType);
+        io.output("index_j",input[p*q+1].cast(dfeUInt(32)), addressType);
+        io.output("acc_type",input[p*q+2].cast(dfeUInt(32)), addressType);
+        io.output("write_enable",input[p*q+3].cast(dfeUInt(32)), addressType);
 
     }
 }
