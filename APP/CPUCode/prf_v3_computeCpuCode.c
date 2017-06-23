@@ -36,6 +36,13 @@ void setCompute(int N, int64_t* compute, int64_t value){
         compute[i]=value;
 }
 
+int64_t generateComputeOp(int32_t compute_i, int32_t compute_j, int32_t compute_acc_type){
+         int64_t compute_op = compute_i<< 18;
+        compute_op = (compute_j<< 4) | compute_op;
+        compute_op = compute_acc_type | compute_op;
+        return compute_op;
+}
+
 int main(int argc, char* argv[])
 {
     int i,j,k,w;
@@ -69,9 +76,13 @@ int main(int argc, char* argv[])
         //Add here first call to the PRF on maxeler board
 printf("Executing\n");
         //For testing purposes the computation is skept. 
-        int32_t compute_addr_len=0;
+        int32_t compute_addr_len=2;
         int64_t *compute_ops = (int64_t*) malloc(sizeof(int64_t)*10);
         
+        // i=1 j=1 acc_type= Rectangle
+        compute_ops[0]=generateComputeOp(1,1,1);
+        compute_ops[1]=generateComputeOp(0,0,1);
+        printf("Compute Op 1: %d\n", compute_ops[1]);        
 
         prf_v3_compute(counter, compute_addr_len , counter, input_data,output_data, compute_ops);
 printf("Done\n");
