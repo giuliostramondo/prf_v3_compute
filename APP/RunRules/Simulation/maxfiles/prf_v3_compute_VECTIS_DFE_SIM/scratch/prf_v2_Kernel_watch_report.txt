@@ -1,3 +1,0 @@
-internal_watch_compute_b_output*compute_b*12*{HWOffsetFix:32, 0, TWOSCOMPLEMENT}*0*DECIMAL::false
-internal_watch_compute_bla_output*compute_bla*12*{HWOffsetFix:32, 0, TWOSCOMPLEMENT}*0*DECIMAL::false
-internal_watch_compute_eq_output*compute_eq*1800*{HWOffsetFix:1, 0, UNSIGNED}*0*DECIMAL::false

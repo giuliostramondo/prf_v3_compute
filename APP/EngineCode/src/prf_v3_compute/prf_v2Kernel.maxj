@@ -59,7 +59,7 @@ class prf_v2Kernel extends Kernel {
         //Setting it to 10 elements for now, the actual number of elements is stored
         //in C_it
         //Memory<DFEVar> compute_addr = mem.alloc(dfeUInt(32),C_it);
-        Memory<DFEVar> compute_addr = mem.alloc(dfeUInt(32),COMPUTE_DEPTH);
+        Memory<DFEVar> compute_addr = mem.alloc(dfeUInt(64),COMPUTE_DEPTH);
         compute_addr.mapToCPU("compute_addr");
 
 
@@ -100,20 +100,26 @@ class prf_v2Kernel extends Kernel {
         //The output order is row by row, it is assumed that p*q%M==0 ( p*q divisible by M )
         
         //Note: According to the cheatsheet there is no read_enable signal
-        DFEVar compute_item = compute_addr.read((it_cast-In_accesses).cast(dfeUInt(MathUtils.bitsToAddress(COMPUTE_DEPTH))));
-        DFEVar index_i_comp =  compute_item >> 20;
-        DFEVar index_j_comp =  (compute_item >> 4) & 0xFFFF;
-        DFEVar type_comp =  (compute_item >> 4) & 0xFFFF;
+        (KernelMath.modulo( it_cast-In_accesses,10 )).cast(dfeUInt(MathUtils.bitsToAddress(COMPUTE_DEPTH))).simWatch("compute_address");
+        DFEVar compute_item = compute_addr.read((KernelMath.modulo(it_cast-In_accesses,10)).cast(dfeUInt(MathUtils.bitsToAddress(COMPUTE_DEPTH))));
+        DFEVar index_i_comp =  compute_item >> 18;
+        DFEVar index_j_comp =  (compute_item >> 4) & 0x3FFF;
+        DFEVar type_comp =  (compute_item ) & 0xF;
 
-        DFEVar index_i = writingInput===1 ? index_i_in : index_i_comp; 
+        compute_item.simWatch("compute_item");        
+        index_i_comp.cast(dfeUInt(32)).simWatch("index_i_comp");
+        index_j_comp.cast(dfeUInt(32)).simWatch("index_j_comp");
+        type_comp.simWatch("type_comp");
+        DFEVar index_i = writingInput===1 ? index_i_in : index_i_comp.cast(dfeUInt(32)); 
         index_i = writingOutput===1 ? ((it_cast-In_accesses-C_it)*p*q)/M : index_i;
         //Same for index_j
-        DFEVar index_j = writingInput === 1  ? index_j_in : index_j_comp;
+        DFEVar index_j = writingInput === 1  ? index_j_in : index_j_comp.cast(dfeUInt(32));
         index_j = writingOutput=== 1 ? KernelMath.modulo(((it_cast-In_accesses-C_it)*p*q),M).cast(dfeUInt(32)) : index_j;
         
-        DFEVar acc_type= writingInput=== 1 ? acc_type_in : type_comp;
+        DFEVar acc_type= writingInput=== 1 ? acc_type_in : type_comp.cast(dfeUInt(32));
+
         //Output in ROWS type = 1
-        acc_type= writingOutput=== 1? constant.var(1).cast(dfeUInt(32)) : type_comp;
+        acc_type= writingOutput=== 1? constant.var(1).cast(dfeUInt(32)) : acc_type;
         
         // If writing input PRF 1 is enabled to write 
         DFEVar write_en_PRF1= writingInput === 1 ? write_enable_in : constant.var(0).cast(dfeUInt(32));
@@ -196,7 +202,8 @@ class prf_v2Kernel extends Kernel {
         for(int i =0 ; i< p*q ; i++){
             // trying to let the input through the second memory if we are writing the input
         //    output1[i] = output_[i]+1;
-            output1[i] = writingInput? reordered_input_data_arr[i/q][i%q] : output_[i]+1;
+            //output1[i] = writingInput? reordered_input_data_arr[i/q][i%q] : output_[i]+1;
+            output1[i] = writingInput? reordered_input_data_arr[i/q][i%q] : mem_out1[i/q][i%q]+1;
             output1[i].simWatch("output1_"+i/q+"_"+i%q);
         }
         for(int i =0 ; i< p*q ; i++){

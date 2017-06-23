@@ -19,16 +19,20 @@ extern "C" {
 /**
  * \brief Basic static function for the interface 'default'.
  * 
- * \param [in] param_COMPUTE Interface Parameter "COMPUTE".
  * \param [in] param_N Interface Parameter "N".
+ * \param [in] param_compute_addr_len Interface Parameter "compute_addr_len".
+ * \param [in] param_in_accesses Interface Parameter "in_accesses".
  * \param [in] instream_input_vector The stream should be of size (param_N * 96) bytes.
  * \param [out] outstream_output The stream should be of size (param_N * 64) bytes.
+ * \param [in] inmem_prf_v2_Kernel_compute_addr Mapped ROM inmem_prf_v2_Kernel_compute_addr, should be of size (10 * sizeof(uint64_t)).
  */
 void prf_v3_compute(
-	int64_t param_COMPUTE,
 	int64_t param_N,
+	int64_t param_compute_addr_len,
+	int64_t param_in_accesses,
 	const int64_t *instream_input_vector,
-	int64_t *outstream_output);
+	int64_t *outstream_output,
+	const uint64_t *inmem_prf_v2_Kernel_compute_addr);
 
 /**
  * \brief Basic static non-blocking function for the interface 'default'.
@@ -38,27 +42,33 @@ void prf_v3_compute(
  * note that one of these *must* be called, so that associated memory can be released.
  * 
  * 
- * \param [in] param_COMPUTE Interface Parameter "COMPUTE".
  * \param [in] param_N Interface Parameter "N".
+ * \param [in] param_compute_addr_len Interface Parameter "compute_addr_len".
+ * \param [in] param_in_accesses Interface Parameter "in_accesses".
  * \param [in] instream_input_vector The stream should be of size (param_N * 96) bytes.
  * \param [out] outstream_output The stream should be of size (param_N * 64) bytes.
+ * \param [in] inmem_prf_v2_Kernel_compute_addr Mapped ROM inmem_prf_v2_Kernel_compute_addr, should be of size (10 * sizeof(uint64_t)).
  * \return A handle on the execution status, or NULL in case of error.
  */
 max_run_t *prf_v3_compute_nonblock(
-	int64_t param_COMPUTE,
 	int64_t param_N,
+	int64_t param_compute_addr_len,
+	int64_t param_in_accesses,
 	const int64_t *instream_input_vector,
-	int64_t *outstream_output);
+	int64_t *outstream_output,
+	const uint64_t *inmem_prf_v2_Kernel_compute_addr);
 
 /**
  * \brief Advanced static interface, structure for the engine interface 'default'
  * 
  */
 typedef struct { 
-	int64_t param_COMPUTE; /**<  [in] Interface Parameter "COMPUTE". */
 	int64_t param_N; /**<  [in] Interface Parameter "N". */
+	int64_t param_compute_addr_len; /**<  [in] Interface Parameter "compute_addr_len". */
+	int64_t param_in_accesses; /**<  [in] Interface Parameter "in_accesses". */
 	const int64_t *instream_input_vector; /**<  [in] The stream should be of size (param_N * 96) bytes. */
 	int64_t *outstream_output; /**<  [out] The stream should be of size (param_N * 64) bytes. */
+	const uint64_t *inmem_prf_v2_Kernel_compute_addr; /**<  [in] Mapped ROM inmem_prf_v2_Kernel_compute_addr, should be of size (10 * sizeof(uint64_t)). */
 } prf_v3_compute_actions_t;
 
 /**
