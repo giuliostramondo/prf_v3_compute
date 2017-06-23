@@ -118,8 +118,14 @@ class prf_v2Kernel extends Kernel {
         // If writing input PRF 1 is enabled to write 
         DFEVar write_en_PRF1= writingInput === 1 ? write_enable_in : constant.var(0).cast(dfeUInt(32));
         // If not writingInput and not writingOutput then we are computing, so PRF2 is enabled to write
-        DFEVar write_en_PRF2= (writingInput === 0 & writingOutput ===0) ? write_enable_in : constant.var(0).cast(dfeUInt(32));
+        //TEST: the following is commented, not writing in PRF2 only if output is being produced
+        //DFEVar write_en_PRF2= (writingInput === 0 & writingOutput ===0) ? constant.var(1).cast(dfeUInt(32)) : constant.var(0).cast(dfeUInt(32));
+        DFEVar write_en_PRF2= ( writingOutput ===0) ? write_enable_in : constant.var(0).cast(dfeUInt(32));
         
+        write_en_PRF1.simWatch("write_en_PRF1");
+        write_en_PRF2.simWatch("write_en_PRF2");
+
+
         it_cast.simWatch("it_cast");
         writingInput.simWatch("writingInput");
         writingOutput.simWatch("writingOutput");
@@ -160,8 +166,6 @@ class prf_v2Kernel extends Kernel {
         //    }
         //compute.simWatch("compute");
         //compute.eq(1).simWatch("compute_eq");
-        
-        // Remove this it was used for the precomputation stage
         //for(int i =0 ; i< p ; i++)
         //    for(int j =0; j< q; j++){
         //        mem_in[i][j] = compute.eq(1)? reordered_input_data_arr[i][j]+5 : reordered_input_data_arr[i][j];
@@ -188,13 +192,25 @@ class prf_v2Kernel extends Kernel {
         //for(int i =0 ; i< p*q ; i++){
         //        output[i] = compute.eq(2)? output_[i]+1 : output_[i];
         //    }
-        
+       
         for(int i =0 ; i< p*q ; i++){
-            output1[i] = output_[i]+1;
+            // trying to let the input through the second memory if we are writing the input
+        //    output1[i] = output_[i]+1;
+            output1[i] = writingInput? reordered_input_data_arr[i/q][i%q] : output_[i]+1;
+            output1[i].simWatch("output1_"+i/q+"_"+i%q);
+        }
+        for(int i =0 ; i< p*q ; i++){
+            // trying to let the input through the second memory if we are writing the input
+        //    output1[i] = output_[i]+1;
+            reordered_in_memory_addr[i].simWatch("reordered_in_mem_addr_"+i/q+"_"+i%q);
+        }
+        for(int i =0 ; i< p*q ; i++){
+            // trying to let the input through the second memory if we are writing the input
+        //    output1[i] = output_[i]+1;
+            reordered_input_data_arr[i/q][i%q].simWatch("reordered_input_data_arr_"+i/q+"_"+i%q);
         }
         // Question... does it make sense to reorder the output if it needs to be reordered again to be inputted in PRF1 ?
         // Probably not.. will try using directly memo_out1 as direct input of PRF1 (afterwards)
-        
         
         DFEVar mem_out2[][] = Utils.parallelMemories(write_en_PRF2, output1, reordered_in_memory_addr);
         
@@ -203,11 +219,16 @@ class prf_v2Kernel extends Kernel {
         // Therefore it will be linked to the second PRF ( PRF1 ) with a write enable 0x0 when not in computation.
         DFEVar output2[] = Utils.Crossbar(mem_out2, reordering_signal_i, reordering_signal_j);
         
+        for(int i =0 ; i< p ; i++)
+            for(int j =0; j< q; j++){
+                mem_out2[i][j].simWatch("memout2_"+i+"_"+j);
+            }
 
         optimization.popNoPipelining();
         for(int i =0 ; i< p ; i++)
             for(int j =0; j< q; j++){
-                io.output("o_"+i+"_"+j, output2[i*q+j], type);
+                output2[i*q+j].simWatch("Output2_"+i+"_"+j);
+                io.output("o_"+i+"_"+j, output2[i*q+j], type, writingOutput ===1);
             }
     }
 

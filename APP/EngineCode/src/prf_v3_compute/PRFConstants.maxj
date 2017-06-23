@@ -10,9 +10,9 @@ public class PRFConstants extends Kernel{
     //static final DFEType addressType = dfeInt(64);
     static int p = 2;
     static int q = 4;
-    static int M = 100;
-    static int N = 100;
-    static int MEMORY_DEPTH = 1250;
+    static int M = 104;
+    static int N = 104;
+    static int MEMORY_DEPTH = 1352;
     static int MEMORY_ADDRESS_SIZE = 11; //log_2 of MEMORY_DEPTH;
     static int FREQUENCY = 100;
     static final DFEType type = dfeUInt(64);
@@ -25,7 +25,7 @@ public class PRFConstants extends Kernel{
          RoCo,
          ReTr,
         }
-    static MappingScheme mappingScheme=MappingScheme.ReTr;
+    static MappingScheme mappingScheme=MappingScheme.ReRo;
 
     protected PRFConstants(KernelParameters parameters) {
         super(parameters);
