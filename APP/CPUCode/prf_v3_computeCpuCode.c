@@ -43,6 +43,22 @@ int64_t generateComputeOp(int32_t compute_i, int32_t compute_j, int32_t compute_
         return compute_op;
 }
 
+uint64_t *packString(char c[], int *len_packed){
+        int len = strlen(c);
+        *len_packed=(len/8);
+        if(len%8!=0)
+            *len_packed+=1;
+        uint64_t *packed=(uint64_t*)malloc(sizeof(uint64_t)*((len/8)+1));
+        memcpy(packed,c,len);
+        return packed;
+}
+
+char *unpackString(uint64_t* packed_string, int len_packed){
+        char *unpacked=(char*)malloc(sizeof(char)*len_packed*8);
+        memcpy(unpacked,packed_string,(len_packed)*8);
+        return unpacked;
+}
+
 int main(int argc, char* argv[])
 {
     int i,j,k,w;
@@ -55,26 +71,46 @@ int main(int argc, char* argv[])
     M = parameters.M;
     scheme s = parameters.s;
     //int A_test[N][M];
-
-    int **A_test = (int**)malloc(sizeof(int*)*N);
-
-    for(i=0;i<N;i++){
-        A_test[i]= (int*)malloc(sizeof(int)*M);
+    //string length 211 char
+    //
+    FILE *file;
+    char* string = (char*)malloc(sizeof(char)*N*M*8);
+    file = fopen("/home/giuliostramondo/Projects/prf_v3_compute/APP/CPUCode/text_104x104.txt", "r");
+    
+    i=0;
+    char c;
+    if (file) {
+        while ((c = getc(file)) != EOF)
+                    string[i++]=c;
+        fclose(file);
+        //adding string terminator
+        string[N*M*8-1]='\0';
     }
-    for(i=0;i<N;i++){
-        for(j=0;j<M;j++){
-            A_test[i][j]= i*M+j;
-        }
+    else{
+        printf("Could not find file\n");
     }
+    printf("number of chars: %d\n",i);
+   // int64_t **A_test = (int64_t**)malloc(sizeof(int64_t*)*N);
+    int length=0;
+    uint64_t *A_test_1d = packString(string, &length);
+    printf("Packed string length: %d\n",length);
+   // for(i=0;i<N;i++){
+    //    A_test[i]= (int64_t*)malloc(sizeof(int64_t)*M);
+    //}
+    //for(i=0;i<N;i++){
+    //    for(j=0;j<M;j++){
+    //            A_test[i][j]= (int64_t)string[i*M+j];
+     //   }
+    //}
     data_type* input_data;
     data_type* output_data;
     int counter=0;
     char* scheme_name = schemeStringFromMappingScheme(s);
 
-        input_data = fillPRF( p, q, RECT_ROW,A_test,  &counter);
+        //input_data = fillPRF( p, q, RECT_ROW,A_test,  &counter);
+        input_data = fillPRF1D( p, q,M, RECT_ROW,A_test_1d,  &counter);
         output_data = (data_type*) malloc(sizeof(data_type)*p*q*counter);
         //Add here first call to the PRF on maxeler board
-printf("Executing\n");
         //For testing purposes the computation is skept. 
         int32_t compute_addr_len=2;
         int64_t *compute_ops = (int64_t*) malloc(sizeof(int64_t)*10);
@@ -82,64 +118,42 @@ printf("Executing\n");
         // i=1 j=1 acc_type= Rectangle
         compute_ops[0]=generateComputeOp(1,1,1);
         compute_ops[1]=generateComputeOp(0,0,1);
-        printf("Compute Op 1: %d\n", compute_ops[1]);        
 
-        prf_v3_compute(counter, compute_addr_len , counter, input_data,output_data, compute_ops);
-printf("Done\n");
+        int64_t caesar_param =3;
+        printf("Executing: caesar code param %d\n",caesar_param);
+        prf_v3_compute(counter,caesar_param, counter, input_data,output_data);
+        printf("Done\n");
 
-//            int error = 0;
-//            //Check equivalence
-//            for (j=0;j<counter;j++){
-//                if (s == ROW_COL && !((input_data[j*((p*q)+4) + (p*q)] % p==0) || (input_data[j*((p*q)+4) + (p*q)+1] % q==0)) ){
-//                                continue;
-//                }
-//                for(k=0;k<p*q;k++){
-//                    if(output_data[j*(p*q)+k] != expected_output[j*(p*q)+k]){
-//                        error=1;
-//                    }
-//                }
-//                if(error){
-//                    //Print error
-//                    printf("\033[31m[Error]\033[0m\t output %d\n",j);
-//                    printf("Input: ");
-//                     for(w=0;w<(p*q)+4;w++){
-//                        printf("%d ",input_data[j*((p*q)+4)+w]);
-//                    }
-//                    printf("\n");
-//                    printf("Expected Output: ");
-//            for(w=0;w<p*q;w++){
-//                        printf("%d ",expected_output[j*(p*q)+w]);
-//                    }
-//                    printf("\n");
-//                    printf("Output: ");
-//                    for(w=0;w<p*q;w++){
-//                        printf("%d ",output_data[j*(p*q)+w]);
-//                    }
-//                    printf("\n");
-//                    error=0;
-//                }else{
-//            printf("\033[32m[Correct]\033[0m\t output %d\n",j);
-//            printf("Input: ");
-//                         for(w=0;w<(p*q)+4;w++){
-//                            printf("%d ",input_data[j*((p*q)+4)+w]);
-//                        }
-//                        printf("\n");
-//                        printf("Output: ");
-//                        for(w=0;w<p*q;w++){
-//                            printf("%d ",output_data[j*(p*q)+w]);
-//                        }
-//                        printf("\n");
-//
-//        }
-//            }
-
-
-        for( i = 0; i<M;i++){
+        char* output_string = unpackString(output_data,length);
+        printf("Printing output\n");
+        for( i = 0; i<M*8;i++){
             for(j=0; j<N ; j++){
-            printf("%d \n", output_data[i*N+j]);
+                         
+                printf("%c ", output_string[i*N+j]);
             }
+            printf("\n");
         }    
+        counter=0;
+        free(input_data);
+        printf("Generating input data...\n");
+        fflush(stdout);
+        input_data =fillPRF1D(p,q,M,RECT_ROW,output_data,&counter);
+        printf("Done\n");
+        fflush(stdout);
 
+        printf("Executing: caesar code  inverse param %d\n",-caesar_param);
+        prf_v3_compute(counter,-caesar_param, counter, input_data,output_data);
+        printf("Done\n");
+
+        output_string = unpackString(output_data,length);
+        printf("Printing output\n");
+        for( i = 0; i<M*8;i++){
+            for(j=0; j<N ; j++){
+                         
+                printf("%c ", output_string[i*N+j]);
+            }
+            printf("\n");
+        }
     return 0;
 }
 

@@ -13,7 +13,8 @@ int checkBoundaries(int p,int q, Address2d* elements);
 //Returns the number of parallel access required, with a given shape, to access all the elements of the matrix
 int totAccessToScanMatrix(int p, int q, acc_type shape);
 
-data_type* fillPRF(int p, int q, scheme s, int **A_test, int *el_counter);
+data_type* fillPRF(int p, int q, scheme s, data_type **A_test, int *el_counter);
+data_type* fillPRF1D(int p, int q, int M, scheme s, data_type *A_test, int *el_counter);
 data_type* generate_expected_output(int p, int q, int **A_test, data_type* input_data, int size);
 data_type* all_accesses(int p, int q, acc_type shape, int N, int M, int *el_counter);
 

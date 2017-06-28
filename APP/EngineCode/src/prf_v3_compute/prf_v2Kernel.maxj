@@ -33,13 +33,16 @@ class prf_v2Kernel extends Kernel {
         //TODO
         DFEVar In_accesses = io.scalarInput("in_accesses", dfeUInt(32));
         
+        DFEVar CaesarCodeInc = io.scalarInput("caesar_param", dfeUInt(64));
+        
         //Number of compute ticks, passed as a parameter
         //TODO
         //is the compute param still necessary?
         // well it will be used to hold the number of items in the compute
         //DFEVar compute = io.scalarInput("compute", dfeInt(32));
         
-        DFEVar C_it  = io.scalarInput("compute_addr_len", dfeUInt(32));
+        //DFEVar C_it  = io.scalarInput("compute_addr_len", dfeUInt(32));
+        DFEVar C_it  = constant.var((M*N)/(p*q));
 
         //Number of ticks to output the result ( assuming that M is divisible by (p*q) )
         DFEVar Out_accesses=constant.var((M*N)/(p*q));
@@ -59,8 +62,8 @@ class prf_v2Kernel extends Kernel {
         //Setting it to 10 elements for now, the actual number of elements is stored
         //in C_it
         //Memory<DFEVar> compute_addr = mem.alloc(dfeUInt(32),C_it);
-        Memory<DFEVar> compute_addr = mem.alloc(dfeUInt(64),COMPUTE_DEPTH);
-        compute_addr.mapToCPU("compute_addr");
+//        Memory<DFEVar> compute_addr = mem.alloc(dfeUInt(64),COMPUTE_DEPTH);
+//        compute_addr.mapToCPU("compute_addr");
 
 
         //Total number of tick of the kernel ( Write+Compute+Output )
@@ -101,12 +104,13 @@ class prf_v2Kernel extends Kernel {
         
         //Note: According to the cheatsheet there is no read_enable signal
         (KernelMath.modulo( it_cast-In_accesses,10 )).cast(dfeUInt(MathUtils.bitsToAddress(COMPUTE_DEPTH))).simWatch("compute_address");
-        DFEVar compute_item = compute_addr.read((KernelMath.modulo(it_cast-In_accesses,10)).cast(dfeUInt(MathUtils.bitsToAddress(COMPUTE_DEPTH))));
-        DFEVar index_i_comp =  compute_item >> 18;
-        DFEVar index_j_comp =  (compute_item >> 4) & 0x3FFF;
-        DFEVar type_comp =  (compute_item ) & 0xF;
+        //DFEVar compute_item = compute_addr.read((KernelMath.modulo(it_cast-In_accesses,10)).cast(dfeUInt(MathUtils.bitsToAddress(COMPUTE_DEPTH))));
+        //DFEVar index_i_comp =  compute_item >> 18;
+        DFEVar index_i_comp =   ((it_cast-In_accesses)*p*q)/M;
+        DFEVar index_j_comp =   KernelMath.modulo(((it_cast-In_accesses)*p*q),M).cast(dfeUInt(32)) ;
+        DFEVar type_comp = constant.var(1).cast(dfeUInt(32)) ;
 
-        compute_item.simWatch("compute_item");        
+       // compute_item.simWatch("compute_item");        
         index_i_comp.cast(dfeUInt(32)).simWatch("index_i_comp");
         index_j_comp.cast(dfeUInt(32)).simWatch("index_j_comp");
         type_comp.simWatch("type_comp");
@@ -203,7 +207,13 @@ class prf_v2Kernel extends Kernel {
             // trying to let the input through the second memory if we are writing the input
         //    output1[i] = output_[i]+1;
             //output1[i] = writingInput? reordered_input_data_arr[i/q][i%q] : output_[i]+1;
-            output1[i] = writingInput? reordered_input_data_arr[i/q][i%q] : mem_out1[i/q][i%q]+1;
+            //DFEVar compute_out[][]=new DFEVar[p][q];
+            DFEVar compute_out= constant.var(0).cast(dfeUInt(64));
+            for(int j=0; j<8;j++){
+                compute_out=((((((mem_out1[i/q][i%q]>>(j*8))&0xFF))+CaesarCodeInc)<<(j*8))|compute_out);
+            }
+            output1[i] = writingInput? reordered_input_data_arr[i/q][i%q] : compute_out;
+            //output1[i] = writingInput? reordered_input_data_arr[i/q][i%q] : mem_out1[i/q][i%q];
             output1[i].simWatch("output1_"+i/q+"_"+i%q);
         }
         for(int i =0 ; i< p*q ; i++){
