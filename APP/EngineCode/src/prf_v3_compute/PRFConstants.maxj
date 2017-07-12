@@ -4,16 +4,17 @@ import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
 import com.maxeler.maxcompiler.v2.kernelcompiler.KernelParameters;
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEType;
 import com.maxeler.maxcompiler.v2.managers.engine_interfaces.CPUTypes;
+import java.lang.*;
 
 public class PRFConstants extends Kernel{
     //static final DFEType type = dfeInt(32);
     //static final DFEType addressType = dfeInt(64);
     static int p = 2;
     static int q = 4;
-    static int M = 104;
-    static int N = 104;
-    static int MEMORY_DEPTH = 1352;
-    static int MEMORY_ADDRESS_SIZE = 11; //log_2 of MEMORY_DEPTH;
+    static int M = 512;
+    static int N = 512;
+    static int MEMORY_DEPTH = (M*N)/(p*q);
+    static int MEMORY_ADDRESS_SIZE =(int) Math.ceil( Math.log(MEMORY_DEPTH)/Math.log(2.0)); //log_2 of MEMORY_DEPTH;
     static int FREQUENCY = 100;
     static final DFEType type = dfeUInt(64);
     static final CPUTypes cpu_type = CPUTypes.INT64;
