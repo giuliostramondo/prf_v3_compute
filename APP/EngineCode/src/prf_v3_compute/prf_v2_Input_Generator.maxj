@@ -29,14 +29,15 @@ public class prf_v2_Input_Generator  extends Kernel{
             for(int j=0; j<q ; j++){
 
                 io.output("input_data_arr"+i+"_"+j,input[(i*q)+j], type);
+                input[(i*q)+j].simWatch("input_"+i+"_"+j);
             }
         }
 
-        
-        input[p*q].simWatch("index_i_generator"); 
-        input[p*q+1].simWatch("index_j_generator"); 
-        input[p*q+2].simWatch("accesstype_generator"); 
-        input[p*q+3].simWatch("write_enable_generator"); 
+
+        input[p*q].simWatch("index_i_generator");
+        input[p*q+1].simWatch("index_j_generator");
+        input[p*q+2].simWatch("accesstype_generator");
+        input[p*q+3].simWatch("write_enable_generator");
         io.output("index_i",input[p*q].cast(dfeUInt(32)), addressType);
         io.output("index_j",input[p*q+1].cast(dfeUInt(32)), addressType);
         io.output("acc_type",input[p*q+2].cast(dfeUInt(32)), addressType);

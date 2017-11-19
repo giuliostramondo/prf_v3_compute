@@ -70,14 +70,19 @@ public class prf_v3_computeManager extends CustomManager{
         //InterfaceParam iterations =  engine_interface.addParam("iterations", CPUTypes.INT);
         InterfaceParam  compute    = engine_interface.addParam("compute_addr_len", CPUTypes.INT);
         InterfaceParam  in_accesses    = engine_interface.addParam("in_accesses", CPUTypes.INT);
+        InterfaceParam  M    = engine_interface.addParam("M", CPUTypes.INT);
+        InterfaceParam  N1    = engine_interface.addParam("N1", CPUTypes.INT);
         InterfaceParam  caesar_param = engine_interface.addParam("caesar_param", CPUTypes.INT64);
 
         //engine_interface.setScalar("prf_v2_Kernel", "compute", compute);
 //        engine_interface.setScalar("prf_v2_Kernel", "compute_addr_len", compute);
         engine_interface.setScalar("prf_v2_Kernel", "in_accesses", in_accesses);
         engine_interface.setScalar("prf_v2_Kernel","caesar_param",caesar_param);
+        engine_interface.setScalar("prf_v2_Kernel","M",M);
+        engine_interface.setScalar("prf_v2_Kernel","N",N1);
         engine_interface.setTicks("prf_v2_Input_Generator", N);
-        engine_interface.setTicks("prf_v2_Kernel", in_accesses + 2* (PRFConstants.M*PRFConstants.N)/(p*q));
+        engine_interface.setTicks("prf_v2_Kernel", in_accesses + 2* (M*N1)/(p*q));
+        //engine_interface.setTicks("prf_v2_Kernel", in_accesses + 2* (363*363)/(p*q));
         engine_interface.setTicks("PRFOutputGen", N);
 
         engine_interface.setStream("input_vector", type, N * (size*p*q+size*4));

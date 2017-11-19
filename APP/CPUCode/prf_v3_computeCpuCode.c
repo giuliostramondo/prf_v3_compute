@@ -67,15 +67,19 @@ int main(int argc, char* argv[])
     return 0;
     int p = parameters.p;
     int q = parameters.q;
-    N = parameters.N;
-    M = parameters.M;
+    //N = parameters.N;
+    //M = parameters.M;
+    N = 256;
+    M = 256;
     scheme s = parameters.s;
     //int A_test[N][M];
     //string length 211 char
     //
     FILE *file;
     char* string = (char*)malloc(sizeof(char)*N*M*8);
-    file = fopen("/home/giuliostramondo/Projects/prf_v3_compute/APP/CPUCode/text_512x512.txt", "r");
+    //file = fopen("./text_512x512.txt", "r");
+
+    file = fopen("./text_256x256.txt", "r");
     
     i=0;
     char c;
@@ -111,6 +115,7 @@ int main(int argc, char* argv[])
         //input_data = fillPRF( p, q, RECT_ROW,A_test,  &counter);
         input_data = fillPRF1D( p, q,M, RECT_ROW,A_test_1d,  &counter);
         output_data = (data_type*) malloc(sizeof(data_type)*p*q*counter);
+        printf("Counter %d\n",counter);
         //Add here first call to the PRF on maxeler board
         //For testing purposes the computation is skept. 
         int32_t compute_addr_len=2;
@@ -121,6 +126,8 @@ int main(int argc, char* argv[])
         compute_ops[1]=generateComputeOp(0,0,1);
 	//Loading bitstream
 	max_file_t* max_prf_comp = prf_v3_compute_init();	
+
+
 	max_engine_t* myDFE = max_load(max_prf_comp,"*");
         
         int64_t caesar_param =3;
@@ -128,16 +135,20 @@ int main(int argc, char* argv[])
 	//Setting inputs
 	prf_v3_compute_actions_t prf_actions;
 	prf_actions.param_N=counter;
+	prf_actions.param_N1=N;
+	prf_actions.param_M=M;
 	prf_actions.param_caesar_param=caesar_param;
 	prf_actions.param_in_accesses=counter;
 	prf_actions.instream_input_vector=input_data;
 	prf_actions.outstream_output=output_data;
 	
         printf("Executing: caesar code param %d\n",caesar_param);
-        //prf_v3_compute(counter,caesar_param, counter, input_data,output_data);
+
         gettimeofday(&before, NULL);
         prf_v3_compute_run(myDFE,&prf_actions);
-	gettimeofday(&after, NULL);
+        gettimeofday(&after, NULL);
+
+
         printf("Done\n");
 	double time =(double)(after.tv_sec - before.tv_sec) +
                                 (double)(after.tv_usec - before.tv_usec) / 1e6;

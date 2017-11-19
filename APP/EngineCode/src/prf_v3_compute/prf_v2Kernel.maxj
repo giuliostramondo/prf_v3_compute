@@ -3,14 +3,12 @@ package prf_v3_compute;
 import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
 import com.maxeler.maxcompiler.v2.kernelcompiler.KernelParameters;
 import com.maxeler.maxcompiler.v2.kernelcompiler.RoundingMode;
-import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEType;
-import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
-import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
-import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.memory.Memory;
 import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.KernelMath;
 import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Count.Counter;
 import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.Count.Params;
-import com.maxeler.maxcompiler.v2.kernelcompiler.stdlib.core.CounterChain;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEType;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEVector;
 import com.maxeler.maxcompiler.v2.utils.MathUtils;
 
 class prf_v2Kernel extends Kernel {
@@ -21,8 +19,7 @@ class prf_v2Kernel extends Kernel {
     static int M = PRFConstants.M;
     static int N = PRFConstants.N;
     private static final int COMPUTE_DEPTH=10;
-    //TODO trying remove below
-//    public Memory<DFEVar> memorymodules [][] ;
+
     protected prf_v2Kernel(KernelParameters parameters) {
         super(parameters);
 
@@ -32,27 +29,32 @@ class prf_v2Kernel extends Kernel {
         //Number of ticks to write in the PRF the input data, passed as parameter
         //TODO
         DFEVar In_accesses = io.scalarInput("in_accesses", dfeUInt(32));
-        
+
         DFEVar CaesarCodeInc = io.scalarInput("caesar_param", dfeUInt(64));
-        
+
+        DFEVar M = io.scalarInput("M", dfeUInt(32));
+        DFEVar N = io.scalarInput("N", dfeUInt(32));
+
+
         //Number of compute ticks, passed as a parameter
         //TODO
         //is the compute param still necessary?
         // well it will be used to hold the number of items in the compute
         //DFEVar compute = io.scalarInput("compute", dfeInt(32));
-        
-        //DFEVar C_it  = io.scalarInput("compute_addr_len", dfeUInt(32));
-        DFEVar C_it  = constant.var((M*N)/(p*q));
 
+        //DFEVar C_it  = io.scalarInput("compute_addr_len", dfeUInt(32));
+        //DFEVar C_it  = constant.var((M*N)/(p*q));
+        DFEVar C_it  = (M*N)/(p*q);
         //Number of ticks to output the result ( assuming that M is divisible by (p*q) )
-        DFEVar Out_accesses=constant.var((M*N)/(p*q));
-       
+        //DFEVar Out_accesses=constant.var((M*N)/(p*q));
+        DFEVar Out_accesses=(M*N)/(p*q);
+
         /* Compute item composition
-         *  | 14 | 14 | 4 | 
+         *  | 14 | 14 | 4 |
          * The compute address is 32 bit
          * the first 16 most significant bits are used to encode the i position
          * the next 16 bits encode the j position
-         * the last 4 bits encode the type 
+         * the last 4 bits encode the type
          */
 
 
@@ -70,68 +72,71 @@ class prf_v2Kernel extends Kernel {
         DFEVar MaxIterations = In_accesses +C_it+Out_accesses;
         Params paramCount = control.count.makeParams(32).withMax(MaxIterations).withInc(1);
         Counter it = control.count.makeCounter(paramCount);
-        
+
         DFEVar it_cast = it.getCount().cast(dfeUInt(32));
 
         DFEVar writingInput = (it_cast<In_accesses);
         //If current iteration is more than number of Input reading iteration + number of compute iteration writingOutput is true
         DFEVar writingOutput = (it_cast >= (In_accesses + C_it));
 
-       
+
         //Read from input streams until input data is over
-        
+
         DFEVar index_i_in = io.input("index_i", dfeUInt(32), writingInput===1);
         DFEVar index_j_in = io.input("index_j", dfeUInt(32), writingInput===1);
         DFEVar acc_type_in = io.input("acc_type", dfeUInt(32), writingInput===1);
         DFEVar write_enable_in = io.input("write_enable", dfeUInt(32), writingInput===1);
-        
+
         index_i_in.simWatch("index_i_in");
         index_j_in.simWatch("index_j_in");
 
         DFEVar input_data_arr[][] = new DFEVar[p][q];
-        
+
 
         for(int i =0 ; i< p ; i++)
             for(int j =0; j< q; j++){
                 input_data_arr[i][j] = writingInput === 1 ? io.input("input_data_arr"+i+"_"+j, type, writingInput ===1) : constant.var(0);
         }
 
-       
+
         //The i index is taken from the input for the first In_access ticks
         //After from the compute_addr memory to perform the computation
-        //After from the counter the row by row accesses are computed for the output  
+        //After from the counter the row by row accesses are computed for the output
         //The output order is row by row, it is assumed that p*q%M==0 ( p*q divisible by M )
-        
+
         //Note: According to the cheatsheet there is no read_enable signal
         (KernelMath.modulo( it_cast-In_accesses,10 )).cast(dfeUInt(MathUtils.bitsToAddress(COMPUTE_DEPTH))).simWatch("compute_address");
         //DFEVar compute_item = compute_addr.read((KernelMath.modulo(it_cast-In_accesses,10)).cast(dfeUInt(MathUtils.bitsToAddress(COMPUTE_DEPTH))));
         //DFEVar index_i_comp =  compute_item >> 18;
         DFEVar index_i_comp =   ((it_cast-In_accesses)*p*q)/M;
-        DFEVar index_j_comp =   KernelMath.modulo(((it_cast-In_accesses)*p*q),M).cast(dfeUInt(32)) ;
+        //DFEVar index_j_comp =   KernelMath.modulo(((it_cast-In_accesses)*p*q),M).cast(dfeUInt(32)) ;
+        DFEVar index_j_comp =   KernelMath.divMod((it_cast-In_accesses)*p*q, M).getRemainder() ;
+
+
         DFEVar type_comp = constant.var(1).cast(dfeUInt(32)) ;
 
-       // compute_item.simWatch("compute_item");        
+       // compute_item.simWatch("compute_item");
         index_i_comp.cast(dfeUInt(32)).simWatch("index_i_comp");
         index_j_comp.cast(dfeUInt(32)).simWatch("index_j_comp");
         type_comp.simWatch("type_comp");
-        DFEVar index_i = writingInput===1 ? index_i_in : index_i_comp.cast(dfeUInt(32)); 
+        DFEVar index_i = writingInput===1 ? index_i_in : index_i_comp.cast(dfeUInt(32));
         index_i = writingOutput===1 ? ((it_cast-In_accesses-C_it)*p*q)/M : index_i;
         //Same for index_j
         DFEVar index_j = writingInput === 1  ? index_j_in : index_j_comp.cast(dfeUInt(32));
-        index_j = writingOutput=== 1 ? KernelMath.modulo(((it_cast-In_accesses-C_it)*p*q),M).cast(dfeUInt(32)) : index_j;
-        
+        //index_j = writingOutput=== 1 ? KernelMath.modulo(((it_cast-In_accesses-C_it)*p*q),M).cast(dfeUInt(32)) : index_j;
+        index_j = writingOutput=== 1 ? KernelMath.divMod(((it_cast-In_accesses-C_it)*p*q),M).getRemainder() : index_j;
         DFEVar acc_type= writingInput=== 1 ? acc_type_in : type_comp.cast(dfeUInt(32));
 
         //Output in ROWS type = 1
         acc_type= writingOutput=== 1? constant.var(1).cast(dfeUInt(32)) : acc_type;
-        
-        // If writing input PRF 1 is enabled to write 
+
+        // If writing input PRF 1 is enabled to write
         DFEVar write_en_PRF1= writingInput === 1 ? write_enable_in : constant.var(0).cast(dfeUInt(32));
         // If not writingInput and not writingOutput then we are computing, so PRF2 is enabled to write
         //TEST: the following is commented, not writing in PRF2 only if output is being produced
         //DFEVar write_en_PRF2= (writingInput === 0 & writingOutput ===0) ? constant.var(1).cast(dfeUInt(32)) : constant.var(0).cast(dfeUInt(32));
         DFEVar write_en_PRF2= ( writingOutput ===0) ? write_enable_in : constant.var(0).cast(dfeUInt(32));
-        
+
         write_en_PRF1.simWatch("write_en_PRF1");
         write_en_PRF2.simWatch("write_en_PRF2");
 
@@ -164,10 +169,10 @@ class prf_v2Kernel extends Kernel {
             reordered_in_memory_addr = Utils.Inv_Crossbar(in_memory_addr, reordering_signal_i, reordering_signal_j);
             reordered_input_data_arr = Utils.Inv_Crossbar_2d(input_data_arr, reordering_signal_i, reordering_signal_j);
         }
-        
+
         DFEVar mem_out[][]=new DFEVar[p][q];
         DFEVar mem_in[][]=new DFEVar[p][q];
-        
+
         //TODO trying uncomment below
         //optimization.pushNoPipelining();
         //for(int i =0 ; i< p ; i++)
@@ -180,7 +185,7 @@ class prf_v2Kernel extends Kernel {
         //    for(int j =0; j< q; j++){
         //        mem_in[i][j] = compute.eq(1)? reordered_input_data_arr[i][j]+5 : reordered_input_data_arr[i][j];
         //    }
-        
+
         // Here mem_in needs to be substituted with the reordered_input_data_arr to get the data from the input stream.
         // However the write_enable after the input writing part should be set to 0.
         // The signal reordered_in_memory_addr should already be controlled by the erlier switches between the input and computation.
@@ -192,17 +197,17 @@ class prf_v2Kernel extends Kernel {
         // Therefore it will be linked to the second PRF ( PRF1 ) with a write enable 0x0 when not in computation.
         DFEVar output_[] = Utils.Crossbar(mem_out1, reordering_signal_i, reordering_signal_j);
         DFEVar output1[] = new DFEVar[p*q];
-        
-        // Given that is not going to be written if not in computation it can be computed everytime and then ignored, saving a switch (? : )
-        
-        // Note it can be reintroduced the switch, just to switch among different kind of computations.
-        
 
-        // Old compute 
+        // Given that is not going to be written if not in computation it can be computed everytime and then ignored, saving a switch (? : )
+
+        // Note it can be reintroduced the switch, just to switch among different kind of computations.
+
+
+        // Old compute
         //for(int i =0 ; i< p*q ; i++){
         //        output[i] = compute.eq(2)? output_[i]+1 : output_[i];
         //    }
-       
+
         for(int i =0 ; i< p*q ; i++){
             // trying to let the input through the second memory if we are writing the input
         //    output1[i] = output_[i]+1;
@@ -228,14 +233,14 @@ class prf_v2Kernel extends Kernel {
         }
         // Question... does it make sense to reorder the output if it needs to be reordered again to be inputted in PRF1 ?
         // Probably not.. will try using directly memo_out1 as direct input of PRF1 (afterwards)
-        
+
         DFEVar mem_out2[][] = Utils.parallelMemories(write_en_PRF2, output1, reordered_in_memory_addr);
-        
+
         //this output ( output of prf 0 ) is the one that will be computed over during computation.
         // It needs to be ignored if not in computation.
         // Therefore it will be linked to the second PRF ( PRF1 ) with a write enable 0x0 when not in computation.
         DFEVar output2[] = Utils.Crossbar(mem_out2, reordering_signal_i, reordering_signal_j);
-        
+
         for(int i =0 ; i< p ; i++)
             for(int j =0; j< q; j++){
                 mem_out2[i][j].simWatch("memout2_"+i+"_"+j);
