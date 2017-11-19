@@ -25,6 +25,7 @@ typedef struct options{
     int q;/*!< Vertical size of the PRF */
     int N;/*!< Horizontal size of the input matrix */
     int M;/*!< Vertical size of the input matrix */
+    char *input_file; /*!< Path to the file containing the data to process ( only compute version )*/
     int error;/*!< Variable used when the user arguments generate errors */
 } Options;
 

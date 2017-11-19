@@ -77,9 +77,8 @@ int main(int argc, char* argv[])
     //
     FILE *file;
     char* string = (char*)malloc(sizeof(char)*N*M*8);
-    //file = fopen("./text_512x512.txt", "r");
-
-    file = fopen("./text_256x256.txt", "r");
+    //file = fopen("/home/giuliostramondo/Projects/prf_v3_compute/APP/CPUCode/text_512x512.txt", "r");
+    file = fopen(parameters.input_file , "r");
     
     i=0;
     char c;
