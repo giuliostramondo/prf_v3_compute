@@ -104,6 +104,7 @@ int main(int argc, char* argv[])
     //}
     data_type* input_data;
     data_type* output_data;
+    struct timeval before, after;
     int counter=0;
     char* scheme_name = schemeStringFromMappingScheme(s);
 
@@ -118,12 +119,29 @@ int main(int argc, char* argv[])
         // i=1 j=1 acc_type= Rectangle
         compute_ops[0]=generateComputeOp(1,1,1);
         compute_ops[1]=generateComputeOp(0,0,1);
-
+	//Loading bitstream
+	max_file_t* max_prf_comp = prf_v3_compute_init();	
+	max_engine_t* myDFE = max_load(max_prf_comp,"*");
+        
         int64_t caesar_param =3;
-        printf("Executing: caesar code param %d\n",caesar_param);
-        prf_v3_compute(counter,caesar_param, counter, input_data,output_data);
-        printf("Done\n");
 
+	//Setting inputs
+	prf_v3_compute_actions_t prf_actions;
+	prf_actions.param_N=counter;
+	prf_actions.param_caesar_param=caesar_param;
+	prf_actions.param_in_accesses=counter;
+	prf_actions.instream_input_vector=input_data;
+	prf_actions.outstream_output=output_data;
+	
+        printf("Executing: caesar code param %d\n",caesar_param);
+        //prf_v3_compute(counter,caesar_param, counter, input_data,output_data);
+        gettimeofday(&before, NULL);
+        prf_v3_compute_run(myDFE,&prf_actions);
+	gettimeofday(&after, NULL);
+        printf("Done\n");
+	double time =(double)(after.tv_sec - before.tv_sec) +
+                                (double)(after.tv_usec - before.tv_usec) / 1e6;
+	printf("Execution took: %lf s, %lf Op/s", time, N*M*8/time);
         char* output_string = unpackString(output_data,length);
         printf("Printing output\n");
         for( i = 0; i<M*8;i++){
@@ -141,11 +159,21 @@ int main(int argc, char* argv[])
         printf("Done\n");
         fflush(stdout);
 
+	prf_actions.instream_input_vector=input_data;
+	prf_actions.param_caesar_param=-caesar_param;
         printf("Executing: caesar code  inverse param %d\n",-caesar_param);
-        prf_v3_compute(counter,-caesar_param, counter, input_data,output_data);
+        gettimeofday(&before, NULL);
+       	prf_v3_compute_run(myDFE,&prf_actions);
+	gettimeofday(&after, NULL);
         printf("Done\n");
-
+	time =(double)(after.tv_sec - before.tv_sec) +
+                                (double)(after.tv_usec - before.tv_usec) / 1e6;
+	printf("Execution took: %lf s, %lf Op/s", time, N*M*8/time);
         output_string = unpackString(output_data,length);
+	//prf_v3_compute(counter,-caesar_param, counter, input_data,output_data);
+        //printf("Done\n");
+
+        //output_string = unpackString(output_data,length);
         printf("Printing output\n");
         for( i = 0; i<M*8;i++){
             for(j=0; j<N ; j++){

@@ -15,3 +15,5 @@ alias check_include="vim $PROJECTDIR/RunRules/Simulation/include/prf_v3_compute.
 alias prjdir="cd $PROJECTDIR"
 alias debug="'/opt/maxcompiler/bin/maxcompilersim' -n $SLIC -c VECTIS -d 1  restart; env MAXELEROSDIR=\"/opt/maxcompiler/lib/maxeleros-sim\" LD_LIBRARY_PATH=\"/opt/maxcompiler/lib/maxeleros-sim/lib:$LD_LIBRARY_PATH\" SLIC_CONF=\"use_simulation=$SLIC;\"   gdb $PROJECTDIR/RunRules/Simulation/binaries/prf_v3_compute"
 alias debug_valgrind="'/opt/maxcompiler/bin/maxcompilersim' -n $SLIC -c VECTIS -d 1  restart; env MAXELEROSDIR=\"/opt/maxcompiler/lib/maxeleros-sim\" LD_LIBRARY_PATH=\"/opt/maxcompiler/lib/maxeleros-sim/lib:$LD_LIBRARY_PATH\" SLIC_CONF=\"use_simulation=$SLIC;\"   valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --num-callers=20 --track-fds=yes  $PROJECTDIR/RunRules/Simulation/binaries/prf_v3_compute"
+
+alias omaxprj="enginesrc; vim PRFConstants.maxj  PRFOutputGen.maxj  prf_v2_Input_Generator.maxj  prf_v2Kernel.maxj  prf_v3_computeEngineParameters.maxj  prf_v3_computeManager.maxj  Utils.maxj"
