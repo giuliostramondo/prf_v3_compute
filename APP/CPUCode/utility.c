@@ -100,6 +100,7 @@ Options parseArguments(int argc, char** argv){
     res.q=4;
     res.N=512;
     res.M=512;
+    res.input_file="/home/giuliostramondo/Projects/prf_v3_compute/APP/CPUCode/text_512x512.txt";
     res.s = RECT_ROW;
     res.error=0;
 
@@ -136,7 +137,10 @@ Options parseArguments(int argc, char** argv){
         res.M = atoi(argv[++i]);
     } else if(!strcmp(argv[i],"-N") && argc>i+1){
         res.N = atoi(argv[++i]);
-    } else {
+    } else if(!strcmp(argv[i],"-f") && argc>i+1){
+        res.input_file = argv[++i];
+    }
+      else {
         printUsage(argv[0]);
         res.error = 1;
     }
