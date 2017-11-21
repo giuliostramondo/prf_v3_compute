@@ -169,7 +169,7 @@ class prf_v2Kernel extends Kernel {
         DFEVar mem_in[][]=new DFEVar[p][q];
         
         //TODO trying uncomment below
-        optimization.pushNoPipelining();
+        //optimization.pushNoPipelining();
         //for(int i =0 ; i< p ; i++)
         //    for(int j =0; j< q; j++){
         //        mem_out[i][j] = constant.var(0);
@@ -241,7 +241,7 @@ class prf_v2Kernel extends Kernel {
                 mem_out2[i][j].simWatch("memout2_"+i+"_"+j);
             }
 
-        optimization.popNoPipelining();
+        //optimization.popNoPipelining();
         for(int i =0 ; i< p ; i++)
             for(int j =0; j< q; j++){
                 output2[i*q+j].simWatch("Output2_"+i+"_"+j);
