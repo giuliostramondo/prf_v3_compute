@@ -93,18 +93,10 @@ int main(int argc, char* argv[])
         printf("Could not find file\n");
     }
     printf("number of chars: %d\n",i);
-   // int64_t **A_test = (int64_t**)malloc(sizeof(int64_t*)*N);
     int length=0;
     uint64_t *A_test_1d = packString(string, &length);
     printf("Packed string length: %d\n",length);
-   // for(i=0;i<N;i++){
-    //    A_test[i]= (int64_t*)malloc(sizeof(int64_t)*M);
-    //}
-    //for(i=0;i<N;i++){
-    //    for(j=0;j<M;j++){
-    //            A_test[i][j]= (int64_t)string[i*M+j];
-     //   }
-    //}
+
     data_type* input_data;
     data_type* output_data;
     struct timeval before, after;
@@ -123,13 +115,19 @@ int main(int argc, char* argv[])
         // i=1 j=1 acc_type= Rectangle
         compute_ops[0]=generateComputeOp(1,1,1);
         compute_ops[1]=generateComputeOp(0,0,1);
+
 	//Loading bitstream
 	max_file_t* max_prf_comp = prf_v3_compute_init();	
 
 
 	max_engine_t* myDFE = max_load(max_prf_comp,"*");
         
-        int64_t caesar_param =3;
+    int64_t caesar_param =3;
+
+	//<<<<<START  FOR LMem Interface
+    printf("Loading DFE memory.\n");
+    prf_v3_compute_writeLMem(counter*(p*q+4), 0, input_data);
+	//<<<<<END  FOR LMem Interface
 
 	//Setting inputs
 	prf_v3_compute_actions_t prf_actions;
@@ -138,16 +136,20 @@ int main(int argc, char* argv[])
 	prf_actions.param_M=M;
 	prf_actions.param_caesar_param=caesar_param;
 	prf_actions.param_in_accesses=counter;
-	prf_actions.instream_input_vector=input_data;
-	prf_actions.outstream_output=output_data;
-	
+	//<<<<<START COMMENTED FOR LMem Interface
+	//prf_actions.instream_input_vector=input_data;
+	//prf_actions.outstream_output=output_data;
+	//<<<<<END COMMENTED FOR LMem Interface
         printf("Executing: caesar code param %d\n",caesar_param);
 
         gettimeofday(&before, NULL);
         prf_v3_compute_run(myDFE,&prf_actions);
         gettimeofday(&after, NULL);
 
-
+    	//<<<<<START  FOR LMem Interface
+    	printf("Reading DFE memory.\n");
+    	prf_v3_compute_readLMem(counter, p*q*counter, output_data);
+    	//<<<<<END  FOR LMem Interface
         printf("Done\n");
 	double time =(double)(after.tv_sec - before.tv_sec) +
                                 (double)(after.tv_usec - before.tv_usec) / 1e6;
@@ -169,21 +171,33 @@ int main(int argc, char* argv[])
         printf("Done\n");
         fflush(stdout);
 
-	prf_actions.instream_input_vector=input_data;
-	prf_actions.param_caesar_param=-caesar_param;
+    	//<<<<<START  FOR LMem Interface
+        printf("Loading DFE memory.\n");
+        prf_v3_compute_writeLMem(counter*(p*q+4), 0, input_data);
+    	//<<<<<END  FOR LMem Interface
+
+    	//<<<<<START COMMENTED FOR LMem Interface
+        //prf_actions.instream_input_vector=input_data;
+		//<<<<<END COMMENTED  FOR LMem Interface
+
+        prf_actions.param_caesar_param=-caesar_param;
+
         printf("Executing: caesar code  inverse param %d\n",-caesar_param);
         gettimeofday(&before, NULL);
        	prf_v3_compute_run(myDFE,&prf_actions);
 	gettimeofday(&after, NULL);
+
+	//<<<<<START  FOR LMem Interface
+	printf("Reading DFE memory.\n");
+	prf_v3_compute_readLMem(counter, p*q*counter, output_data);
+	//<<<<<END  FOR LMem Interface
+
         printf("Done\n");
 	time =(double)(after.tv_sec - before.tv_sec) +
                                 (double)(after.tv_usec - before.tv_usec) / 1e6;
 	printf("Execution took: %lf s, %lf Op/s", time, N*M*8/time);
-        output_string = unpackString(output_data,length);
-	//prf_v3_compute(counter,-caesar_param, counter, input_data,output_data);
-        //printf("Done\n");
+      output_string = unpackString(output_data,length);
 
-        //output_string = unpackString(output_data,length);
         printf("Printing output\n");
         for( i = 0; i<M*8;i++){
             for(j=0; j<N ; j++){

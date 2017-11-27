@@ -1,14 +1,15 @@
 package prf_v3_compute;
 
 import com.maxeler.maxcompiler.v2.build.EngineParameters;
-import com.maxeler.maxcompiler.v2.managers.BuildConfig;
 import com.maxeler.maxcompiler.v2.managers.custom.CustomManager;
 import com.maxeler.maxcompiler.v2.managers.custom.DFELink;
 import com.maxeler.maxcompiler.v2.managers.custom.blocks.KernelBlock;
+import com.maxeler.maxcompiler.v2.managers.custom.stdlib.LMemCommandGroup;
+import com.maxeler.maxcompiler.v2.managers.custom.stdlib.LMemInterface;
 import com.maxeler.maxcompiler.v2.managers.engine_interfaces.CPUTypes;
 import com.maxeler.maxcompiler.v2.managers.engine_interfaces.EngineInterface;
+import com.maxeler.maxcompiler.v2.managers.engine_interfaces.EngineInterface.Direction;
 import com.maxeler.maxcompiler.v2.managers.engine_interfaces.InterfaceParam;
-import com.maxeler.maxcompiler.v2.managers.standard.Manager;
 
 public class prf_v3_computeManager extends CustomManager{
 
@@ -25,8 +26,22 @@ public class prf_v3_computeManager extends CustomManager{
         KernelBlock prf_v2_Kernel = addKernel(
                 new prf_v2Kernel(makeKernelParameters("prf_v2_Kernel")));
 
+        //<<<<<< START ADDITION LMEM TRANSFER
+		LMemInterface iface = addLMemInterface();
+		DFELink cpu2lmem = iface.addStreamToLMem("cpu2lmem", LMemCommandGroup.MemoryAccessPattern.LINEAR_1D);
+		DFELink lmem2cpu = iface.addStreamFromLMem("lmem2cpu", LMemCommandGroup.MemoryAccessPattern.LINEAR_1D);
+
+		DFELink fromcpu = addStreamFromCPU("fromcpu");
+		DFELink tocpu = addStreamToCPU("tocpu");
+
+		cpu2lmem <== fromcpu;
+		tocpu <== lmem2cpu;
+		//<<<<<< END ADDITION LMEM TRANSFER
+
         //CPU INPUTS
-        prf_v2_Input_Generator.getInput("input_vector")<==addStreamFromCPU("input_vector");
+		DFELink input_vector = iface.addStreamFromLMem("input_vector",LMemCommandGroup.MemoryAccessPattern.LINEAR_1D);
+        prf_v2_Input_Generator.getInput("input_vector")<==input_vector;
+
         //prf_v2_Kernel.getInput("compute")<==addStreamFromCPU("compute");
         //Unpacking output from Input generator
         DFELink index_i = prf_v2_Input_Generator.getOutput("index_i");
@@ -47,8 +62,8 @@ public class prf_v3_computeManager extends CustomManager{
                     PRFOutputGen.getInput("o_"+i+"_"+j)<== out;
                 }
 
-        out = PRFOutputGen.getOutput("output");
-        addStreamToCPU("output")<== out;
+        DFELink oData = iface.addStreamToLMem("oData",LMemCommandGroup.MemoryAccessPattern.LINEAR_1D);
+        oData <== PRFOutputGen.getOutput("output");
     }
 
     public static void main(String[] args) {
@@ -56,10 +71,37 @@ public class prf_v3_computeManager extends CustomManager{
         prf_v3_computeManager manager = new prf_v3_computeManager(params);
         manager.config.setDefaultStreamClockFrequency(PRFConstants.FREQUENCY);
         manager.createSLiCinterface(interfaceDefault());
-
+        manager.createSLiCinterface(interfaceWrite("writeLMem"));
+        manager.createSLiCinterface(interfaceRead("readLMem"));
 
         manager.build();
     }
+
+	private static EngineInterface interfaceWrite(String name) {
+		EngineInterface ei = new EngineInterface(name);
+		CPUTypes   type = PRFConstants.cpu_type;
+		InterfaceParam size  = ei.addParam("size", CPUTypes.INT);
+		InterfaceParam start = ei.addParam("start", CPUTypes.INT);
+		InterfaceParam sizeInBytes = size * type.sizeInBytes();
+
+		ei.setStream("fromcpu", type, sizeInBytes );
+		ei.setLMemLinear("cpu2lmem", start * type.sizeInBytes(), sizeInBytes);
+		ei.ignoreAll(Direction.IN_OUT);
+		return ei;
+	}
+
+	private static EngineInterface interfaceRead(String name) {
+		EngineInterface ei = new EngineInterface(name);
+		CPUTypes   type = PRFConstants.cpu_type;
+		InterfaceParam size  = ei.addParam("size", CPUTypes.INT);
+		InterfaceParam start = ei.addParam("start", CPUTypes.INT);
+		InterfaceParam sizeInBytes = size * type.sizeInBytes();
+
+		ei.setLMemLinear("lmem2cpu", start * type.sizeInBytes(), sizeInBytes);
+		ei.setStream("tocpu", type, sizeInBytes);
+		ei.ignoreAll(Direction.IN_OUT);
+		return ei;
+	}
 
     private static EngineInterface interfaceDefault() {
         EngineInterface engine_interface = new EngineInterface();
@@ -67,37 +109,32 @@ public class prf_v3_computeManager extends CustomManager{
         int        size = type.sizeInBytes();
 
         InterfaceParam  N    = engine_interface.addParam("N", CPUTypes.INT);
-        //InterfaceParam iterations =  engine_interface.addParam("iterations", CPUTypes.INT);
-        InterfaceParam  compute    = engine_interface.addParam("compute_addr_len", CPUTypes.INT);
         InterfaceParam  in_accesses    = engine_interface.addParam("in_accesses", CPUTypes.INT);
         InterfaceParam  M    = engine_interface.addParam("M", CPUTypes.INT);
         InterfaceParam  N1    = engine_interface.addParam("N1", CPUTypes.INT);
         InterfaceParam  caesar_param = engine_interface.addParam("caesar_param", CPUTypes.INT64);
 
-        //engine_interface.setScalar("prf_v2_Kernel", "compute", compute);
-//        engine_interface.setScalar("prf_v2_Kernel", "compute_addr_len", compute);
+
         engine_interface.setScalar("prf_v2_Kernel", "in_accesses", in_accesses);
         engine_interface.setScalar("prf_v2_Kernel","caesar_param",caesar_param);
         engine_interface.setScalar("prf_v2_Kernel","M",M);
         engine_interface.setScalar("prf_v2_Kernel","N",N1);
+
         engine_interface.setTicks("prf_v2_Input_Generator", N);
         engine_interface.setTicks("prf_v2_Kernel", in_accesses + 2* (M*N1)/(p*q));
-        //engine_interface.setTicks("prf_v2_Kernel", in_accesses + 2* (363*363)/(p*q));
         engine_interface.setTicks("PRFOutputGen", N);
 
-        engine_interface.setStream("input_vector", type, N * (size*p*q+size*4));
-        //engine_interface.setStream("compute", type, N * size);
-        engine_interface.setStream("output",type, N * (size*p*q));
+        //<<COMMENTED AND ADDED FOR LMEM IMPLEMENTATION>
+        //engine_interface.setStream("input_vector", type, N * (size*p*q+size*4));
+		InterfaceParam zero = engine_interface.addConstant(0l);
+		engine_interface.setLMemLinear("input_vector", zero, N * (size*p*q+size*4));
+		engine_interface.setLMemLinear("oData", 2 * N * (size*p*q+size*4), N * (size*p*q));
 
+        //<<COMMENTED AND ADDED FOR LMEM IMPLEMENTATION>
+
+        //engine_interface.setStream("output",type, N * (size*p*q));
+		engine_interface.ignoreAll(Direction.IN_OUT);
         return engine_interface;
-    }
-
-    private static void configBuild(Manager manager, prf_v3_computeEngineParameters params) {
-        manager.setEnableStreamStatusBlocks(false);
-        BuildConfig buildConfig = manager.getBuildConfig();
-        buildConfig.setMPPRCostTableSearchRange(params.getMPPRStartCT(), params.getMPPREndCT());
-        buildConfig.setMPPRParallelism(params.getMPPRThreads());
-        buildConfig.setMPPRRetryNearMissesThreshold(params.getMPPRRetryThreshold());
     }
 }
 
