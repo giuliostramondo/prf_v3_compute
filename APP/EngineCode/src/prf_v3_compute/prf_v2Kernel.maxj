@@ -113,7 +113,10 @@ class prf_v2Kernel extends Kernel {
         DFEVar index_j_comp =   KernelMath.divMod((it_cast-In_accesses)*p*q, M).getRemainder() ;
 
 
-        DFEVar type_comp = constant.var(1).cast(dfeUInt(32)) ;
+        //Commented below, the access type for the computation is now a parameter 
+        //DFEVar type_comp = constant.var(1).cast(dfeUInt(32)) ;
+        DFEVar type_comp = io.scalarInput("access_type_computation", dfeUInt(32));
+
 
        // compute_item.simWatch("compute_item");
         index_i_comp.cast(dfeUInt(32)).simWatch("index_i_comp");

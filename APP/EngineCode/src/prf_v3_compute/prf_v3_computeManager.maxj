@@ -72,6 +72,7 @@ public class prf_v3_computeManager extends CustomManager{
         InterfaceParam  in_accesses    = engine_interface.addParam("in_accesses", CPUTypes.INT);
         InterfaceParam  M    = engine_interface.addParam("M", CPUTypes.INT);
         InterfaceParam  N1    = engine_interface.addParam("N1", CPUTypes.INT);
+        InterfaceParam  computation_access_type    = engine_interface.addParam("computation_access_type", CPUTypes.INT);
         InterfaceParam  caesar_param = engine_interface.addParam("caesar_param", CPUTypes.INT64);
 
         //engine_interface.setScalar("prf_v2_Kernel", "compute", compute);
@@ -80,6 +81,8 @@ public class prf_v3_computeManager extends CustomManager{
         engine_interface.setScalar("prf_v2_Kernel","caesar_param",caesar_param);
         engine_interface.setScalar("prf_v2_Kernel","M",M);
         engine_interface.setScalar("prf_v2_Kernel","N",N1);
+        engine_interface.setScalar("prf_v2_Kernel","type_comp",computation_access_type);
+
         engine_interface.setTicks("prf_v2_Input_Generator", N);
         engine_interface.setTicks("prf_v2_Kernel", in_accesses + 2* (M*N1)/(p*q));
         //engine_interface.setTicks("prf_v2_Kernel", in_accesses + 2* (363*363)/(p*q));

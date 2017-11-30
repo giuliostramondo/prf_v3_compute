@@ -136,6 +136,7 @@ int main(int argc, char* argv[])
 	prf_actions.param_N=counter;
 	prf_actions.param_N1=N;
 	prf_actions.param_M=M;
+	prf_actions.param_type_comp=1;
 	prf_actions.param_caesar_param=caesar_param;
 	prf_actions.param_in_accesses=counter;
 	prf_actions.instream_input_vector=input_data;
