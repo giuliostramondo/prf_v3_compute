@@ -67,10 +67,8 @@ int main(int argc, char* argv[])
     return 0;
     int p = parameters.p;
     int q = parameters.q;
-    //N = parameters.N;
-    //M = parameters.M;
-    N = 256;
-    M = 256;
+    N = parameters.N;
+    M = parameters.M;
     scheme s = parameters.s;
     //int A_test[N][M];
     //string length 211 char
