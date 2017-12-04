@@ -100,7 +100,7 @@ Options parseArguments(int argc, char** argv){
     res.q=4;
     res.N=512;
     res.M=512;
-    res.input_file="/home/giuliostramondo/Projects/prf_v3_compute/APP/CPUCode/text_512x512.txt";
+    res.input_file="./text_256x256.txt";
     res.s = RECT_ROW;
     res.error=0;
 
